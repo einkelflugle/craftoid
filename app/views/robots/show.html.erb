@@ -1,2 +1,7 @@
-<h2><%= @robot.name %></h2>
+<h1>
+	<span class="label tier"><%= link_to "T" + @robot.tier.name, @robot.tier %></span>
+	<%= @robot.name %>
+</h1>
 <p><%= @robot.description %></p>
+
+<%= link_to "Back", robots_path, class: "button alternate" %>

@@ -1,15 +1,15 @@
 <%= form_for @robot do |f| %>
 
 	<% if @robot.errors.any? %>
-	<div class="alert">
-		<h2><%= pluralize(@robot.errors.count, "error") %> prohibited this robot from being saved:</h2>
-		<ul>
-			<% @robot.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-			<% end %>
-		</ul>
-	</div>
+		<% @robot.errors.full_messages.each do |msg| %>
+		<div data-alert class="alert-box alert">
+			<%= msg %>
+			<a href="#" class="close">&times;</a>
+		</div>
+		<% end %>
 	<% end %>
+
+	<h1>Create a robot</h1>
 
 	<%= f.label :name %>
 	<%= f.text_field :name %>
@@ -17,7 +17,9 @@
 	<%= f.label :description %>
 	<%= f.text_area :description %>
 
+	<%= f.label :tier_id %>
 	<%= f.collection_select :tier_id, Tier.all, :id, :name, prompt: true %>
 
-	<%= f.submit %>
+	<%= f.submit class: "button" %>
+	<%= link_to "Back", robots_path, class: "button secondary" %>
 <% end %>
