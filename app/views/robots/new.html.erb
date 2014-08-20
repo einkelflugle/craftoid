@@ -17,6 +17,9 @@
 	<%= f.label :description %>
 	<%= f.text_area :description %>
 
+	<%= f.label :categories %>
+	<%= f.select :category_ids, Category.all.collect {|c| [c.name, c.id]}, {include_hidden: false}, multiple: true %>
+
 	<%= f.label :tier_id %>
 	<%= f.collection_select :tier_id, Tier.all, :id, :name, prompt: true %>
 
