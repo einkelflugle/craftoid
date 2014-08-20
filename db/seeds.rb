@@ -1,6 +1,7 @@
 # Create the initial 10 tiers
+Tier.destroy_all
 10.times do |i|
-	Tier.find_or_create_by_name("#{i + 1}")
+	Tier.create(name: "#{i + 1}")
 end
 
 # Add some default categories just to get started
