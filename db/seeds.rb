@@ -1,11 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
+# Create the initial 10 tiers
 10.times do |i|
-	Tier.create(name: "#{i + 1}")
+	Tier.find_or_create_by_name("#{i + 1}")
 end
+
+# Add some default categories just to get started
+Category.create(name: "Sniper", description: "A lightly armoured robot with powerful, long-rage railguns.")
+Category.create(name: "Gunbed", description: "A very well armoured wheeled vehicle, normally equipped with large amounts of lasers.")
+Category.create(name: "Flyer", description: "A moderately armoured winged robot, usually with several thrusters. Weaponry can vary.")
