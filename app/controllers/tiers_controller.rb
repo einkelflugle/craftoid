@@ -1,5 +1,6 @@
 class TiersController < ApplicationController
 	def show
-		@robots = Robot.where(tier_id: params[:id])
+		@tier = params[:id]
+		@robots = Robot.where(tier_id: @tier)
 	end
 end

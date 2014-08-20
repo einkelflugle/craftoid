@@ -20,6 +20,9 @@
 	<%= f.label :tier_id %>
 	<%= f.collection_select :tier_id, Tier.all, :id, :name, prompt: true %>
 
+	<%= f.label :screenshot_url %>
+	<%= f.text_field :screenshot_url %>
+
 	<%= f.submit class: "button" %>
 	<%= link_to "Back", robots_path, class: "button secondary" %>
 <% end %>

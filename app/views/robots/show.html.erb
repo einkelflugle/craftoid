@@ -3,5 +3,6 @@
 	<%= @robot.name %>
 </h1>
 <p><%= @robot.description %></p>
+<%= image_tag @robot.screenshot_url, alt: @robot.name %>
 
 <%= link_to "Back", robots_path, class: "button alternate" %>
