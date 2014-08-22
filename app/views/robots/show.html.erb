@@ -1,5 +1,5 @@
 <h1>
-	<span class="label tier"><%= link_to "T" + @robot.tier.name, @robot.tier %></span>
+	<span class="label tier"><%= link_to "T" + @robot.tier.name, tier_path(@robot.tier.name) %></span>
 	<%= @robot.name %>
 </h1>
 <p><%= @robot.description %></p>

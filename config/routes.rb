@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root 'robots#index'
 
   resources :robots
-  resources :tiers
   resources :categories
+
+  get 'tiers/:name', to: 'tiers#show', as: :tier
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
