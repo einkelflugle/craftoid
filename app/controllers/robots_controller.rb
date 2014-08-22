@@ -1,4 +1,5 @@
 class RobotsController < ApplicationController
+	before_action :signed_in_user, only: [:new, :create, :destroy]
 
 	def index
 		@robots = Robot.all
@@ -6,6 +7,7 @@ class RobotsController < ApplicationController
 
 	def show
 		@robot = Robot.find(params[:id])
+		@user = @robot.user
 	end
 
 	def new
@@ -13,7 +15,7 @@ class RobotsController < ApplicationController
 	end
 
 	def create
-		@robot = Robot.new(robot_params)
+		@robot = current_user.robots.build(robot_params)
 		if @robot.save
 			flash[:success] = "Your robot was successfully created"
 			redirect_to @robot

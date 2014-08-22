@@ -9,11 +9,11 @@
 				<%= link_to robot.name, robot %>
 			</h2>
 			<p><%= truncate(robot.description, length: 100) %></p>
-			<p>Categories: 
+			<span>Categories: 
 				<% robot.categories.each do |c| %>
 					<%= link_to c.name, c, class: "label" %>
 				<% end %>
-			</p>
+			</span>
 		</div>
 	</div>
 </div>

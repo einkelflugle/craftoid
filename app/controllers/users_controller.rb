@@ -45,18 +45,14 @@ class UsersController < ApplicationController
 		redirect_to users_path
 	end
 
+	def robots
+		@user = User.find(params[:id])
+		@robots = Robot.where(user_id: @user.id)
+	end
+
 	private
 		def user_params
 			params.require(:user).permit(:name, :email, :password, :password_confirmation)
-		end
-
-		# Filter out users who aren't signed in
-		def signed_in_user
-			unless signed_in?
-				store_location
-				flash[:notice] = "Please sign in."
-				redirect_to signin_path
-			end
 		end
 
 		# Make sure it's the right user trying to edit a profile

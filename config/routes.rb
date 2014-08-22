@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   get 'tiers/:name', to: 'tiers#show', as: :tier
+  
+  # Show a user's robots
+  get 'users/:id/robots', to: 'users#robots', as: :user_robots
 
   match '/signup', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'

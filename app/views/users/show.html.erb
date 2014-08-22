@@ -2,3 +2,5 @@
 	<%= gravatar_for @user %>
 	<%= @user.name %>
 </h1>
+<%= link_to "View robots", user_robots_path(@user), class: "button" %>
+<%= link_to "Back", :back, class: "button secondary" %>
