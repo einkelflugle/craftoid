@@ -15,6 +15,7 @@ class RobotsController < ApplicationController
 	def create
 		@robot = Robot.new(robot_params)
 		if @robot.save
+			flash[:success] = "Your robot was successfully created"
 			redirect_to @robot
 		else
 			render 'new'

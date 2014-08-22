@@ -2,10 +2,12 @@ Rails.application.routes.draw do
 
   root 'robots#index'
 
+  resources :users
   resources :robots
   resources :categories
 
   get 'tiers/:name', to: 'tiers#show', as: :tier
+  get '/signup',  to: 'users#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

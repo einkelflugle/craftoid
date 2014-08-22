@@ -20,6 +20,11 @@
 	color: $primary-color;
 }
 
+// Form error explanation
+#error_explanation {
+	color: red;
+}
+
 // Multi-select input fix for Foundation
 select[multiple] {
 	height: auto;
