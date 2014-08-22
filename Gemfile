@@ -45,6 +45,15 @@ gem 'foundation-rails'
 # Use Unicorn as the web server
 gem 'unicorn'
 
+# Faker gem for data population
+gem 'faker', '1.1.2'
+
+# Will Paginate to help with displaying data
+gem 'will_paginate', '3.0.4'
+
+# Pagination helper for Foundation CSS framework
+gem 'will_paginate-foundation'
+
 group :production do 
 	gem 'rails_12factor'
 end

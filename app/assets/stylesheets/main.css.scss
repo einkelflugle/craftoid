@@ -25,6 +25,16 @@
 	color: red;
 }
 
+// Change alert button to deeper red
+.button.alert {
+	background-color: $alert-color-dark;
+}
+
+// Customize Foundation to suit Rails' flash notices
+.alert-box.notice {
+	@extend .info;
+}
+
 // Multi-select input fix for Foundation
 select[multiple] {
 	height: auto;

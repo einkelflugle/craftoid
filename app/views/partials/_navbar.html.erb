@@ -15,11 +15,13 @@
                     <li class="has-dropdown">
                         <%= link_to current_user.name, '#' %>
                         <ul class="dropdown">
+                            <li><%= link_to "All users", users_path %></li>
+                            <li class="divider"></li>
                             <li><a href="#">My Robots</a></li>
                             <li><a href="#">My Competition Entries</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Account Settings</a></li>
+                            <li><%= link_to "Profile", current_user %></li>
+                            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                             <li><%= link_to "Sign out", signout_path, method: 'delete' %></li>
                         </ul>
                     </li>
