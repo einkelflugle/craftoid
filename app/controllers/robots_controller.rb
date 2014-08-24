@@ -8,6 +8,7 @@ class RobotsController < ApplicationController
 	def show
 		@robot = Robot.find(params[:id])
 		@user = @robot.user
+		@comments = @robot.comments
 	end
 
 	def new

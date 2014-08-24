@@ -46,4 +46,15 @@ module SessionsHelper
 			redirect_to signin_path
 		end
 	end
+
+	# Confirm the user performing an action is an admin
+	def admin_user
+		redirect_to users_path unless current_user.admin?
+	end
+
+	# Make sure it's the right user trying to do something
+	def correct_user
+		@user = User.find(params[:id])
+		redirect_to(root_url) unless current_user?(@user) || current_user.admin?
+	end
 end

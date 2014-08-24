@@ -5,3 +5,11 @@
 <p class="lead"><%= pluralize(@user.robots.count, "robot") %></p>
 <%= link_to "View robots", user_robots_path(@user), class: "button" %>
 <%= link_to "Back", root_path, class: "button secondary" %>
+
+<h2><%= @user.name %>'s comments:</h2>
+<% @user.comments.each do |comment| %>
+	<div class="panel">
+		<p>"<%= comment.body %>"</p>
+		<p>Robot: <%= link_to comment.robot.name, comment.robot %></p>
+	</div>
+<% end %>

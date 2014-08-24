@@ -1,0 +1,12 @@
+<div class="panel callout">
+	<h3>Add a comment:</h3>
+	<%= form_for([@robot, @robot.comments.build]) do |f| %>
+		<p>
+			<%= f.label :body %>
+			<%= f.text_area :body %>
+		</p>
+		<p>
+			<%= f.submit "Submit commment", class: "button" %>
+		</p>
+	<% end %>
+</div>

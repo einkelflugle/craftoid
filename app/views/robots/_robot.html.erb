@@ -2,6 +2,7 @@
 	<div class="row">
 		<div class="large-4 columns">
 			<%= link_to image_tag(robot.screenshot_url + "192x108.resizedImage", alt: robot.name), robot %>
+			by <%= link_to robot.user.name, robot.user %>
 		</div>
 		<div class="large-8 columns">
 			<h2>

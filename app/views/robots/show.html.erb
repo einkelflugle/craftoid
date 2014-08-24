@@ -22,4 +22,9 @@
 
 <%= image_tag @robot.screenshot_url, alt: @robot.name %>
 
-<%= link_to "Back", robots_path, class: "button alternate" %>
+<h2>Comments:</h2>
+<%= render @robot.comments %>
+
+<%= render 'comments/form' %>
+
+<%= link_to "Back", robots_path, class: "button secondary" %>

@@ -54,15 +54,4 @@ class UsersController < ApplicationController
 		def user_params
 			params.require(:user).permit(:name, :email, :password, :password_confirmation)
 		end
-
-		# Make sure it's the right user trying to edit a profile
-		def correct_user
-			@user = User.find(params[:id])
-			redirect_to(root_url) unless current_user?(@user)
-		end
-
-		# Confirm the user performing an action is an admin
-		def admin_user
-			redirect_to users_path unless current_user.admin?
-		end
 end

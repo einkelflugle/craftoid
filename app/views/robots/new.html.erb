@@ -26,7 +26,8 @@
 	<%= f.label :tier_id %>
 	<%= f.collection_select :tier_id, Tier.all, :id, :name, prompt: true %>
 
-	<%= f.label :screenshot_url %>
+	<%= f.label :screenshot_url, class: "left" %>
+	<span data-tooltip aria-haspopup="true" class="has-tip right" title="This is a link to a Steam screenshot of your robot. It should look something like: http://cloud-4.steampowered.com/ugc/[numbers]">What is this?</span>
 	<%= f.text_field :screenshot_url %>
 
 	<%= f.submit class: "button" %>
