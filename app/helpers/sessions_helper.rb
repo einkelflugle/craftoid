@@ -38,6 +38,12 @@ module SessionsHelper
 		session[:return_to] = request.url if request.get?
 	end
 
+	def admin?(user)
+		if current_user == user
+			user.admin?
+		end
+	end
+
 	# Filter out users who aren't signed in
 	def signed_in_user
 		unless signed_in?

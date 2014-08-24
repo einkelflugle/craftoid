@@ -1,7 +1,7 @@
 <div class="panel">
 	<p class="lead"><%= comment.body %></p>
 	by <%= link_to comment.user.name, comment.user %>
-	<% if current_user.admin? || current_user?(comment.user) %>
+	<% if current_user?(comment.user) || admin?(comment.user) %>
 		<%= link_to "Delete", [comment.robot, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "button alert tiny right" %>
 	<% end %>
 </div>
