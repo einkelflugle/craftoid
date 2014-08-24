@@ -1,7 +1,7 @@
 <h1>Edit your profile</h1>
 <%= form_for(@user) do |f| %>
 
-  <%= render 'partials/errors' %>
+  <%= render 'errors' %>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
