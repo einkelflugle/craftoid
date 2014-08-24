@@ -1,6 +1,7 @@
 class Robot < ActiveRecord::Base
 	belongs_to :tier
 	belongs_to :user
+	belongs_to :competition
 	has_many :comments
 	has_and_belongs_to_many :categories
 
@@ -8,6 +9,19 @@ class Robot < ActiveRecord::Base
 	validates :name, length: {minimum: 5}
 
 	validate :is_steam_url
+
+	def similar_robots(minimum_similar_categories = 1)
+		matches = [] # Gets set to an array of robot objects
+		Robot.all.each do |robot|
+			categories_in_common = self.categories & robot.categories # array of similar categories
+			if categories_in_common.length >= minimum_similar_categories
+				unless self == robot
+					matches << robot
+				end
+			end
+		end
+		matches
+	end
 
 	private
 		def is_steam_url

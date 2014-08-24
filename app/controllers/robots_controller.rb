@@ -9,6 +9,7 @@ class RobotsController < ApplicationController
 		@robot = Robot.find(params[:id])
 		@user = @robot.user
 		@comments = @robot.comments
+		@similar_robots = @robot.similar_robots
 	end
 
 	def new

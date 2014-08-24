@@ -22,8 +22,11 @@
 
 <%= image_tag @robot.screenshot_url, alt: @robot.name %>
 
+<h2>Similar robots:</h2>
+<%= render @similar_robots %>
+
 <h2>Comments:</h2>
-<%= render @robot.comments %>
+<%= render @comments%>
 
 <%= render 'comments/form' %>
 
