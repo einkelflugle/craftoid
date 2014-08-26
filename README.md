@@ -1,28 +1,15 @@
-== README
+# Robocraft Test App
+Just a small Rails application related to the PC game [Robocraft](http://robocraftgame.com) by Freejam.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Nothing special *for now*.
 
-Things you may want to cover:
+## Contributing
+Feel free to make some changes and submit a pull request!
 
-* Ruby version
+To run the app locally, just clone it, then run
 
-* System dependencies
+    rake db:migrate
 
-* Configuration
+to setup the migrations. Finally, start the server using
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    rails server
