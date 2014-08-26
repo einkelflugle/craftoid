@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-    # Set the root path to the main list of robots
-    root 'robots#index'
+    # Set the root path
+    root 'welcome#index'
 
     resources :categories
 

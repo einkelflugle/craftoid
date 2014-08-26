@@ -30,6 +30,22 @@
 	background-color: $alert-color-dark;
 }
 
+// Helps with custom pseudo element styles
+.button {
+	position: relative;
+}
+
+// Give buttons Robocraft-style top right corner
+// .button:not(.secondary):after {
+// 	content: '';
+// 	position: absolute;
+// 	border-left: 1em solid #fd8311;
+// 	border-top: 1em solid transparent;
+// 	right: -1em;
+// 	top: 0;
+// 	bottom: 0;
+// }
+
 // Customize Foundation to suit Rails' flash notices
 .alert-box.notice {
 	@extend .info;
@@ -43,4 +59,21 @@ select[multiple] {
 // Give images a bit of bottom margin
 img {
 	margin-bottom: 20px;
+}
+
+// Hero image for welcome page
+.hero {
+	height: 400px;
+	background-image: url(hero.jpg);
+	background-size: cover;
+	background-position: top center;
+}
+
+// Banner text on welcome page
+.banner {
+	background-color: $primary-color;
+	padding: 10px 0;
+	h1 {
+		margin: 0;
+	}
 }
