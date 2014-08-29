@@ -7,7 +7,7 @@
 	<%= f.label :password %>
 	<%= f.password_field :password %>
 
-	<%= f.submit "Sign in", class: "button" %>
+	<%= button_tag "Sign in", class: "button" %>
 <% end %>
 
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
