@@ -1,0 +1,42 @@
+// Form error explanation
+#error_explanation {
+	color: red;
+}
+
+// Change alert button to deeper red
+.button.alert {
+	background-color: $alert-color-dark;
+}
+
+// Helps with custom pseudo element styles
+.button {
+	position: relative;
+	margin-right: 1em;
+}
+
+// Customize Foundation to suit Rails' flash notices
+.alert-box.notice {
+	@extend .info;
+}
+
+// Multi-select input fix for Foundation
+select[multiple] {
+	height: auto;
+}
+
+// Give buttons Robocraft-style top right corner
+.button:not(.secondary):not(.tiny):not(.large) {
+	&:after {
+		content: '';
+		position: absolute;
+		border-left: 1em solid #fd8311;
+		border-top: 1em solid transparent;
+		right: -1em;
+		top: 0;
+		bottom: 0;
+	}
+	&:hover:after {
+		border-left-color: darken($primary-color, 10%);
+		@include single-transition(300ms, border-color, ease);
+	}
+}

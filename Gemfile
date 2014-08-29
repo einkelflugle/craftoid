@@ -42,6 +42,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use the Foundation CSS framework
 gem 'foundation-rails'
 
+# Make use of Compass's cool mixins
+gem 'compass-rails'
+
 # Use Unicorn as the web server
 gem 'unicorn'
 
