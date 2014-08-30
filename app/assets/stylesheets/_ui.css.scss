@@ -34,9 +34,9 @@ select[multiple] {
 		right: -1em;
 		top: 0;
 		bottom: 0;
+		@include single-transition(300ms, border-color, ease);
 	}
 	&:hover:after {
 		border-left-color: darken($primary-color, 10%);
-		@include single-transition(300ms, border-color, ease);
 	}
 }
