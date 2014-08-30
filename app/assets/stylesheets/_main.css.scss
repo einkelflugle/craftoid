@@ -9,6 +9,10 @@
 		text-align: center;
 		h1, h2, h3, h4, h5, h6 {
 			color: white;
+			margin: 0;
+		}
+		&.small {
+			padding: 70px 20px;
 		}
 	}
 }
@@ -32,6 +36,24 @@
 	p {
 		text-align: center;
 	}
+}
+
+// A list of items with alternating background colours
+.item {
+	background-color: #333333;
+	color: white;
+	padding: 20px 0;
+	&:nth-child(odd) {
+		background-color: #282725;
+	}
+}
+
+// Pagination for lists of things
+.pagination {
+	margin-top: 1rem;
+}
+.pagination-outer {
+	background-color: #333;
 }
 
 // Footer styling

@@ -1,3 +1,7 @@
-<h1>Showing all robots</h1>
+<% provide :hero_title, "Showing all robots" %>
 <%= render @robots %>
-<%= link_to "New Robot", new_robot_path, class: "button" %>
+<div class="pagination-outer">
+	<div class="row">
+		<%= will_paginate renderer: FoundationPagination::Rails %>
+	</div>
+</div>

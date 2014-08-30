@@ -4,7 +4,15 @@
 	<body>
 		<%= render 'partials/navbar' %>
 
-		<div class="row body">
+		<div class="body">
+			<% if content_for? :hero_title %>
+			<div class="hero">
+				<div class="hero-inner small">
+					<h1><%= yield :hero_title %></h1>
+				</div>
+			</div>
+			<% end %>
+
 			<% flash.each do |key, value| %>
 				<div data-alert class="alert-box <%= key %>">
 					<%= value %>
@@ -12,15 +20,10 @@
 				</div>
 			<% end %>
 
-			<div class="large-8 columns">
-				<%= yield %>
-			</div>
+			<%= yield %>
 
-			<div class="large-4 columns">
-				
-			</div>
+			<%= render 'partials/footer' %>
 		</div>
-		
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	</body>
 </html>

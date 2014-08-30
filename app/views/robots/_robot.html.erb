@@ -1,20 +1,20 @@
-<div class="panel">
+<div class="item">
 	<div class="row">
-		<div class="large-4 columns">
-			<%= link_to image_tag(robot.screenshot_url + "192x108.resizedImage", alt: robot.name), robot %>
-			by <%= link_to robot.user.name, robot.user %>
+		<div class="large-3 medium-4 columns">
+			<%= link_to image_tag(robot.screenshot_url + "288x162.resizedImage", alt: robot.name), robot %>
 		</div>
-		<div class="large-8 columns">
+		<div class="large-6 medium-8 columns">
 			<h2>
 				<span class="label tier"><%= link_to "T" + robot.tier.name, tier_path(robot.tier.name) %></span>
 				<%= link_to robot.name, robot %>
 			</h2>
+			<p>by <%= link_to robot.user.name, robot.user %></p>
 			<p><%= truncate(robot.description, length: 100) %></p>
-			<span>Categories: 
-				<% robot.categories.each do |c| %>
-					<%= link_to c.name, c, class: "label" %>
-				<% end %>
-			</span>
+		</div>
+		<div class="large-3 columns">
+		<% robot.categories.each do |c| %>
+			<%= link_to c.name, c, class: "label category" %>
+		<% end %>
 		</div>
 	</div>
 </div>

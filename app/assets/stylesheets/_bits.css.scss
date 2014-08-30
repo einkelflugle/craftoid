@@ -7,6 +7,14 @@
 	}
 }
 
+// Adjustments for large category labels
+.label.category {
+	font-size: $h6-font-size;
+	&:hover {
+		color: white;
+	}
+}
+
 // Gives the main page wrapper a bit of extra top padding
 .row.body {
 	padding-top: 1.25rem;
