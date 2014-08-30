@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 	before_action :signed_in_user, only: [:create, :destroy]
-	before_action :correct_user, only: [:destroy]
+	include CommentsHelper
 
 	def create
 		@robot = Robot.find(params[:robot_id])
@@ -14,7 +14,11 @@ class CommentsController < ApplicationController
 	def destroy
 		@robot = Robot.find(params[:robot_id])
 		@comment = @robot.comments.find(params[:id])
-		@comment.destroy
+		if owns_comment(current_user, @comment)
+			@comment.destroy
+		else
+			flash[:error] = "You cannot delete this comment."
+		end
 
 		redirect_to robot_path(@robot)
 	end

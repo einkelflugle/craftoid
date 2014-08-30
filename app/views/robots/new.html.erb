@@ -1,35 +1,39 @@
-<%= form_for @robot do |f| %>
+<div class="row body">
+	<div class="large-8 columns">
+		<%= form_for @robot do |f| %>
 
-	<% if @robot.errors.any? %>
-		<% @robot.errors.full_messages.each do |msg| %>
-		<div data-alert class="alert-box alert">
-			<%= msg %>
-			<a href="#" class="close">&times;</a>
-		</div>
+			<% if @robot.errors.any? %>
+				<% @robot.errors.full_messages.each do |msg| %>
+				<div data-alert class="alert-box alert">
+					<%= msg %>
+					<a href="#" class="close">&times;</a>
+				</div>
+				<% end %>
+			<% end %>
+
+			<h1>Create a robot</h1>
+
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+
+			<%= f.label :description %>
+			<%= f.text_area :description %>
+
+			<%= f.label :categories %>
+			<% Category.all.each do |c| %>
+				<%= check_box_tag "robot[category_ids][]", c.id, @robot.categories.include?(c) %>
+				<%= c.name %><br>
+			<% end %>
+
+			<%= f.label :tier_id %>
+			<%= f.collection_select :tier_id, Tier.all, :id, :name, prompt: true %>
+
+			<%= f.label :screenshot_url, class: "left" %>
+			<span data-tooltip aria-haspopup="true" class="has-tip right" title="This is a link to a Steam screenshot of your robot. It should look something like: http://cloud-4.steampowered.com/ugc/[numbers]">What is this?</span>
+			<%= f.text_field :screenshot_url %>
+
+			<%= button_tag "Create robot", class: "button" %>
+			<%= link_to "Back", robots_path, class: "button secondary" %>
 		<% end %>
-	<% end %>
-
-	<h1>Create a robot</h1>
-
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-
-	<%= f.label :description %>
-	<%= f.text_area :description %>
-
-	<%= f.label :categories %>
-	<% Category.all.each do |c| %>
-		<%= check_box_tag "robot[category_ids][]", c.id, @robot.categories.include?(c) %>
-		<%= c.name %><br>
-	<% end %>
-
-	<%= f.label :tier_id %>
-	<%= f.collection_select :tier_id, Tier.all, :id, :name, prompt: true %>
-
-	<%= f.label :screenshot_url, class: "left" %>
-	<span data-tooltip aria-haspopup="true" class="has-tip right" title="This is a link to a Steam screenshot of your robot. It should look something like: http://cloud-4.steampowered.com/ugc/[numbers]">What is this?</span>
-	<%= f.text_field :screenshot_url %>
-
-	<%= button_tag "Create robot", class: "button" %>
-	<%= link_to "Back", robots_path, class: "button secondary" %>
-<% end %>
+	</div>
+</div>

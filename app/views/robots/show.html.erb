@@ -1,13 +1,15 @@
-<h1>
-	<span class="label tier"><%= link_to "T" + @robot.tier.name, tier_path(@robot.tier.name) %></span>
-	<%= @robot.name %>
-</h1>
-<p><%= @robot.description %></p>
-<p>By <%= link_to @user.name, @user, data: { reveal_id: "showUser" } %></p>
+<div class="row body">
+	<%= image_tag @robot.screenshot_url, alt: @robot.name %>
 
-<div id="showUser" class="reveal-modal" data-reveal>
-	<div class="row">
-		<div class="large-8 columns">
+	<h1>
+		<span class="label tier"><%= link_to "T" + @robot.tier.name, tier_path(@robot.tier.name) %></span>
+		<%= @robot.name %>
+	</h1>
+	<p><%= @robot.description %></p>
+	<p>By <%= link_to @user.name, @user, data: { reveal_id: "showUser" } %></p>
+
+	<div id="showUser" class="reveal-modal" data-reveal>
+		<div class="row">
 			<h2>
 				<%= gravatar_for @user %>
 				<%= link_to @user.name, @user %>
@@ -16,18 +18,19 @@
 			<%= render @user.robots.limit(3) %>
 			<%= link_to "View all #{@user.name}'s robots", user_robots_path(@user), class: "button" %>
 		</div>
+		<a class="close-reveal-modal">&times;</a>
 	</div>
-	<a class="close-reveal-modal">&times;</a>
+
+	<h2>Similar robots:</h2>
 </div>
 
-<%= image_tag @robot.screenshot_url, alt: @robot.name %>
-
-<h2>Similar robots:</h2>
 <%= render @similar_robots %>
 
-<h2>Comments:</h2>
-<%= render @comments%>
+<div class="row body">
+	<h2>Comments:</h2>
+	<%= render @comments%>
 
-<%= render 'comments/form' %>
+	<%= render 'comments/form' %>
 
-<%= link_to "Back", robots_path, class: "button secondary" %>
+	<%= link_to "Back", robots_path, class: "button secondary" %>
+</div>

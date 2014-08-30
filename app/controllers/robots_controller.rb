@@ -2,7 +2,7 @@ class RobotsController < ApplicationController
 	before_action :signed_in_user, only: [:new, :create, :destroy]
 
 	def index
-		@robots = Robot.paginate(page: params[:page], per_page: 10)
+		@robots = Robot.paginate(page: params[:page], per_page: 9)
 	end
 
 	def show

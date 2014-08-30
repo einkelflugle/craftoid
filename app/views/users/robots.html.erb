@@ -1,3 +1,2 @@
-<h1>Robots for <%= @user.name %></h1>
+<% provide :hero_title, "#{@user.name}'s robots" %>
 <%= render @robots %>
-<%= link_to "Back", :back, class: "button secondary" %>

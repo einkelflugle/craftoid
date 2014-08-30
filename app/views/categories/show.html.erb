@@ -1,4 +1,3 @@
-<h1>Robots in the <%= @category.name %> category</h1>
+<% provide :hero_title, "Robots in the #{@category.name} category" %>
+
 <%= render @robots %>
-<%= link_to "New Robot", new_robot_path, class: "button" %>
-<%= link_to "Back", :back, class: "button secondary" %>
