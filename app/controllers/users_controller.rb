@@ -10,6 +10,9 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@username = @user.name
+		@robots = @user.robots
+		@comments = @user.comments.reverse
 	end
 
 	def new

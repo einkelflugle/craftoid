@@ -1,18 +1,19 @@
 <div class="row body">
 	<h1>
 		<%= gravatar_for @user %>
-		<%= @user.name %>
+		<%= @username %>
 	</h1>
-	<p class="lead"><%= pluralize(@user.robots.count, "robot") %></p>
+	<p class="lead"><%= pluralize(@robots.count, "robot") %></p>
 	<%= link_to "View robots", user_robots_path(@user), class: "button" %>
 	<%= link_to "Back", root_path, class: "button secondary" %>
 
-	<% if !@user.comments.nil? %>
-		<h3><%= @user.name %>'s comments:</h3>
-		<% @user.comments.each do |comment| %>
+	<% if !@comments.nil? %>
+		<h3><%= @username %>'s comments:</h3>
+		<% @comments.each do |comment| %>
 			<div class="panel">
 				<p>"<%= comment.body %>"</p>
-				<p>Robot: <%= link_to comment.robot.name, comment.robot %></p>
+				<span>In response to <%= link_to comment.robot.name, comment.robot %>, <%= time_ago_in_words(comment.created_at) %> ago</span>
+				<%= link_to "Delete", [comment.robot, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "button alert tiny right" %>
 			</div>
 		<% end %>
 	<% end %>
