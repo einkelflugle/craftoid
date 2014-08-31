@@ -1,7 +1,9 @@
-<div class="panel">
-	<p class="lead"><%= comment.body %></p>
-	<span>by <%= link_to comment.user.name, comment.user %>, <%= time_ago_in_words(comment.created_at) %> ago</span>
-	<% if current_user?(comment.user) || admin?(current_user) %>
-		<%= link_to "Delete", [comment.robot, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "button alert tiny right" %>
-	<% end %>
+<div class="body row">
+	<div class="large-12 columns dark body">
+		<p class="lead"><%= comment.body %></p>
+		<span>by <%= link_to comment.user.name, comment.user %>, <%= time_ago_in_words(comment.created_at) %> ago</span>
+		<% if current_user?(comment.user) || admin?(current_user) %>
+			<%= link_to "Delete", [comment.robot, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "button alert tiny right" %>
+		<% end %>
+	</div>
 </div>

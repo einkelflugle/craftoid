@@ -36,7 +36,8 @@ select[multiple] {
 		bottom: 0;
 		@include single-transition(300ms, border-color, ease-out);
 	}
-	&:hover:after {
+	&:hover:after,
+	&:focus:after {
 		border-left-color: scale-color($button-bg-color, $lightness: $button-function-factor);
 	}
 }

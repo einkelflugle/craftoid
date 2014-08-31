@@ -21,6 +21,7 @@
 // Banner text on welcome page
 .banner {
 	background-color: $primary-color;
+	color: black;
 	padding: 10px 0;
 	h1 {
 		margin: 0;
@@ -36,7 +37,14 @@
 	}
 	p {
 		text-align: center;
+		color: black;
 	}
+}
+
+// Adjusts panels to match colour scheme
+.panel.callout {
+	background-color: #AA5500;
+	border: none;
 }
 
 // A list of items with alternating background colours

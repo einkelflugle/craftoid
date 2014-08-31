@@ -4,7 +4,15 @@ h1.xl {
 	font-weight: bold;
 }
 
-h1, h2, h3, h4, h5, h6, a, p {
+h1, h2, h3, h4, h5, h6, a, p, span {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+p, span {
+	color: darken(#fff, 30%);
+}
+
+.lead {
+	color: #fff;
 }

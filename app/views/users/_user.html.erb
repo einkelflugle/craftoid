@@ -1,7 +1,19 @@
-<div class="panel">
-	<%= gravatar_for user, size: 52 %>
-	<%= link_to user.name, user %>
-	<% if admin?(current_user) && !current_user?(user) %>
-		<%= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" }, class: "button alert tiny right" %>
-	<% end %>
+<div class="item">
+	<div class="row">
+		<div class="large-6 columns">
+			<h3>
+				<%= gravatar_for user %>
+				<%= link_to user.name, user %>
+			</h3>
+		</div>
+		<div class="large-4 columns">
+			<p><%= user.robots.count %> robots</p>
+			<p><%= user.comments.count %> comments</p>
+		</div>
+		<div class="large-2 columns">
+			<% if admin?(current_user) && !current_user?(user) %>
+				<%= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" }, class: "button alert tiny right" %>
+			<% end %>
+		</div>
+	</div>
 </div>

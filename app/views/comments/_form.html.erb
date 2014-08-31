@@ -1,12 +1,7 @@
-<div class="panel callout">
+<div class="large-8 columns panel callout body">
 	<h3>Add a comment:</h3>
 	<%= form_for([@robot, @robot.comments.build]) do |f| %>
-		<p>
-			<%= f.label :body %>
-			<%= f.text_area :body %>
-		</p>
-		<p>
-			<%= button_tag "Submit commment", class: "button" %>
-		</p>
+		<p><%= f.text_area :body %></p>
+		<%= button_tag "Submit commment", class: "button" %>
 	<% end %>
 </div>

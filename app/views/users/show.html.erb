@@ -1,20 +1,24 @@
 <div class="row body">
-	<h1>
-		<%= gravatar_for @user %>
-		<%= @username %>
-	</h1>
-	<p class="lead"><%= pluralize(@robots.count, "robot") %></p>
-	<%= link_to "View robots", user_robots_path(@user), class: "button" %>
-	<%= link_to "Back", root_path, class: "button secondary" %>
+	<div class="large-12 columns">
+		<h1>
+			<%= gravatar_for @user %>
+			<%= @username %>
+		</h1>
+		<p class="lead"><%= pluralize(@robots.count, "robot") %></p>
+		<%= link_to "View robots", user_robots_path(@user), class: "button" %>
+		<%= link_to "Back", root_path, class: "button secondary" %>
 
-	<% if !@comments.blank? %>
-		<h3><%= @username %>'s comments:</h3>
-		<% @comments.each do |comment| %>
-			<div class="panel">
-				<p>"<%= comment.body %>"</p>
-				<span>In response to <%= link_to comment.robot.name, comment.robot %>, <%= time_ago_in_words(comment.created_at) %> ago</span>
-				<%= link_to "Delete", [comment.robot, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "button alert tiny right" %>
-			</div>
+		<% if !@comments.blank? %>
+			<h3><%= @username %>'s comments:</h3>
+			<% @comments.each do |comment| %>
+				<div class="body row">
+					<div class="large-12 columns dark body">
+						<p>"<%= comment.body %>"</p>
+						<span>In response to <%= link_to comment.robot.name, comment.robot %>, <%= time_ago_in_words(comment.created_at) %> ago</span>
+						<%= link_to "Delete", [comment.robot, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "button alert tiny right" %>
+					</div>
+				</div>
+			<% end %>
 		<% end %>
-	<% end %>
+	</div>
 </div>

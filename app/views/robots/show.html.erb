@@ -10,13 +10,17 @@
 
 	<div id="showUser" class="reveal-modal" data-reveal>
 		<div class="row">
-			<h2>
-				<%= gravatar_for @user %>
-				<%= link_to @user.name, @user %>
-			</h2>
-			<p class="lead">Top robots:</p>
-			<%= render @user.robots.limit(3) %>
-			<%= link_to "View all #{@user.name}'s robots", user_robots_path(@user), class: "button" %>
+			<div class="large-12 columns">
+				<h2>
+					<%= gravatar_for @user %>
+					<%= link_to @user.name, @user %>
+				</h2>
+				<p class="lead">Top robots:</p>
+				<%= render @user.robots.limit(3) %>
+			</div>
+			<div class="large-12 columns body">
+				<%= link_to "View all #{@user.name}'s robots", user_robots_path(@user), class: "button" %>	
+			</div>
 		</div>
 		<a class="close-reveal-modal">&times;</a>
 	</div>
@@ -27,10 +31,12 @@
 <%= render @similar_robots %>
 
 <div class="row body">
-	<h2>Comments:</h2>
-	<%= render @comments%>
+	<div class="large-12 columns">
+		<h2>Comments:</h2>
+		<%= render @comments %>
+	</div>
+</div>
 
+<div class="row body">
 	<%= render 'comments/form' %>
-
-	<%= link_to "Back", robots_path, class: "button secondary" %>
 </div>

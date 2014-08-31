@@ -1,5 +1,7 @@
+<% provide :hero_title, "Create a robot" %>
+
 <div class="row body">
-	<div class="large-8 columns">
+	<div class="large-8 columns large-centered">
 		<%= form_for @robot do |f| %>
 
 			<% if @robot.errors.any? %>
@@ -10,8 +12,6 @@
 				</div>
 				<% end %>
 			<% end %>
-
-			<h1>Create a robot</h1>
 
 			<%= f.label :name %>
 			<%= f.text_field :name %>

@@ -7,6 +7,11 @@
 	}
 }
 
+// Give an area a dark background color
+.dark {
+	background-color: #282725;
+}
+
 // Adjustments for large category labels
 .label.category {
 	font-size: $h6-font-size;
@@ -15,8 +20,8 @@
 	}
 }
 
-// Gives the main page wrapper a bit of extra top padding
-.row.body {
+// Gives a content wrapper a bit of extra top padding
+.body {
 	padding-top: 1.25rem;
 }
 
