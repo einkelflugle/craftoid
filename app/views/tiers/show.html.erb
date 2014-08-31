@@ -1,3 +1,4 @@
-<h1>Robots in Tier <%= @tier.name %></h1>
-<h3 class="subheader">Total of <%= @robots.count %></h3>
+<% provide :hero_title, "Robots in Tier #{@tier.name}" %>
+<% provide :hero_subtitle, "Total of #{@robots.count}" %>
+
 <%= render @robots %>

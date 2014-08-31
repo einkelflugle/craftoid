@@ -7,7 +7,8 @@
 		padding: 100px 20px;
 		color: white;
 		text-align: center;
-		h1, h2, h3, h4, h5, h6 {
+		// Only main headings, not subheader
+		h1 {
 			color: white;
 			margin: 0;
 		}
