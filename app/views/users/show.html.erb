@@ -7,7 +7,7 @@
 	<%= link_to "View robots", user_robots_path(@user), class: "button" %>
 	<%= link_to "Back", root_path, class: "button secondary" %>
 
-	<% if !@comments.nil? %>
+	<% if !@comments.blank? %>
 		<h3><%= @username %>'s comments:</h3>
 		<% @comments.each do |comment| %>
 			<div class="panel">
