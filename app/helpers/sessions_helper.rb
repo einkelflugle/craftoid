@@ -39,7 +39,7 @@ module SessionsHelper
 	end
 
 	def admin?(user)
-		if current_user == user
+		if signed_in? && current_user == user
 			user.admin?
 		end
 	end
