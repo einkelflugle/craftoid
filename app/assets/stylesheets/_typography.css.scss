@@ -1,7 +1,9 @@
 // Extra-large page headings
 h1.xl {
-	font-size: 4em;
-	font-weight: bold;
+	font-size: rem-calc(34);
+	@media only screen and (min-width: 40.063em) {
+		font-size: rem-calc(60);
+	}
 }
 
 h1, h2, h3, h4, h5, h6, a, p, span {

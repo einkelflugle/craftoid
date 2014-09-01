@@ -12,9 +12,10 @@
 			<p><%= truncate(robot.description, length: 100) %></p>
 		</div>
 		<div class="large-3 columns">
-		<% robot.categories.each do |c| %>
-			<%= link_to c.name, c, class: "label category" %>
-		<% end %>
+			<% robot.categories.each do |c| %>
+				<%= link_to c.name, c, class: "label category" %>
+			<% end %>
+			<p class="body"><%= robot.comments.count %> comments</p>
 		</div>
 	</div>
 </div>

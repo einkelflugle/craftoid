@@ -7,11 +7,6 @@
 		padding: 100px 20px;
 		color: white;
 		text-align: center;
-		// Only main headings, not subheader
-		h1 {
-			color: white;
-			margin: 0;
-		}
 		&.small {
 			padding: 70px 20px;
 		}
@@ -33,7 +28,11 @@
 	list-style-type: none;
 	text-align: center;
 	span {
-		font-size: 80px;
+		font-size: 1.5rem;
+		color: black;
+		@media only screen and (min-width: 40.063em) {
+			font-size: 80px;
+		}
 	}
 	p {
 		text-align: center;
@@ -51,7 +50,7 @@
 .item {
 	background-color: #333333;
 	color: white;
-	padding: 20px;
+	padding: 20px 0;
 	&:nth-child(odd) {
 		background-color: #282725;
 	}
