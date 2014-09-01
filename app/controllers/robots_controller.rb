@@ -2,7 +2,11 @@ class RobotsController < ApplicationController
 	before_action :signed_in_user, only: [:new, :create, :destroy]
 
 	def index
-		@robots = Robot.paginate(page: params[:page], per_page: 9)
+		@robots = Robot.reorder("created_at DESC").paginate(page: params[:page], per_page: 9)
+	end
+
+	def hot
+		@robots = Robot.all.sort_by { |bot| bot.comments.count }.reverse
 	end
 
 	def show

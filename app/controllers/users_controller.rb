@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
 	def robots
 		@user = User.find(params[:id])
-		@robots = Robot.where(user_id: @user.id)
+		@robots = Robot.where(user_id: @user.id).sort_by { |robot| robot.comments.count }.reverse
 	end
 
 	private

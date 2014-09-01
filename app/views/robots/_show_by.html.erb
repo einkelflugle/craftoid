@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="large-12 columns body">
+		<dl class="sub-nav">
+			<dt>Show by:</dt>
+			<dd class="<%= "active" if active == "Newest" %>"><%= link_to "Newest", robots_path %></dd>
+			<dd class="<%= "active" if active == "Hot" %>"><%= link_to "Hot", hot_robots_path %></dd>
+			<% if defined? user %>
+				<dd class="<%= "active" if active == "User" %>">
+					<% if signed_in? && current_user?(user) %>
+						<%= link_to "By me", user_robots_path(current_user) %>
+					<% else %>
+						<%= link_to "By #{user.name}", user_robots_path(user) %>
+					<% end %>
+				</dd>
+			<% end %>
+		</dl>
+	</div>
+</div>

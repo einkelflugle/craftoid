@@ -11,8 +11,11 @@ Rails.application.routes.draw do
 
     get 'tiers/:name', to: 'tiers#show', as: :tier
 
-    # Show a user's robots
+    # Show a robots by user
     get 'users/:id/robots', to: 'users#robots', as: :user_robots
+
+    # Show robots by most commented
+    get '/hot', to: 'robots#hot', as: :hot_robots
 
     # Routes for user/session handling
     resources :sessions, only: [:new, :create, :destroy]

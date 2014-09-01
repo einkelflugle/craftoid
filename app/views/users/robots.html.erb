@@ -1,14 +1,16 @@
 <% provide :hero_title, "#{@user.name}'s robots" %>
 
-<div class="row body">
-	<div class="large-12 columns text-center">
-		<% if @robots.blank? %>
+<%= render 'robots/show_by', active: "User", user: @user %>
+
+<% if @robots.blank? %>
+	<div class="row">
+		<div class="large-12 columns text-center">
 			<h3 class="subheader">No robots to display.</h3>
-		<% end %>
-		<% if @robots.blank? && current_user?(@user) %>
-			<p>Why not <%= link_to "create one?", new_robot_path %></p>
-		<% end %>
+			<% if current_user?(@user) %>
+				<p>Why not <%= link_to "create one?", new_robot_path %></p>
+			<% end %>
+		</div>
 	</div>
-</div>
+<% end %>
 
 <%= render @robots %>

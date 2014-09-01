@@ -1,4 +1,7 @@
-<% provide :hero_title, "Showing all robots" %>
+<% provide :hero_title, "Newest robots" %>
+
+<%= render 'show_by', active: "Newest" %>
+
 <%= render @robots %>
 <div class="pagination-outer">
 	<div class="row">
