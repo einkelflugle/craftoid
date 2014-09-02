@@ -1,8 +1,8 @@
 class RobotsController < ApplicationController
 	include RobotsHelper
 
-	before_action :signed_in_user, only: [:new, :create, :destroy, :edit, :update]
-	before_action :owns_robot, only: [:edit, :update]
+	before_action :signed_in_user, only: [:new, :create, :destroy, :edit, :update, :destroy]
+	before_action :owns_robot, only: [:edit, :update, :destroy]
 
 	def index
 		@robots = Robot.reorder("created_at DESC").paginate(page: params[:page], per_page: 9)
@@ -45,6 +45,12 @@ class RobotsController < ApplicationController
 		else
 			render 'new'
 		end
+	end
+
+	def destroy
+		@robot = Robot.find(params[:id])
+		@robot.destroy
+		redirect_to robots_path
 	end
 
 	private

@@ -8,8 +8,11 @@
 		</h1>
 		<p><%= @robot.description %></p>
 		<p>By <%= link_to @user.name, @user, data: { reveal_id: "showUser" } %></p>
-
-		<%= link_to_if(current_user?(@user), "Edit robot", edit_robot_path(@robot), class: "button") {} %>
+		
+		<% if current_user?(@user) || admin?(current_user) %>
+			<%= link_to "Edit robot", edit_robot_path(@robot), class: "button" %>
+			<%= link_to "Delete robot", @robot, method: :delete, data: { confirm: 'Are you sure?' }, class: "button secondary" %>
+		<% end %>
 
 		<div id="showUser" class="reveal-modal" data-reveal>
 			<div class="row">
