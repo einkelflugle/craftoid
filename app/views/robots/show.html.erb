@@ -9,6 +9,8 @@
 		<p><%= @robot.description %></p>
 		<p>By <%= link_to @user.name, @user, data: { reveal_id: "showUser" } %></p>
 
+		<%= link_to_if(current_user?(@user), "Edit robot", edit_robot_path(@robot), class: "button") {} %>
+
 		<div id="showUser" class="reveal-modal" data-reveal>
 			<div class="row">
 				<div class="large-12 columns">

@@ -16,6 +16,7 @@
 				<%= link_to c.name, c, class: "label category" %>
 			<% end %>
 			<p class="body"><%= pluralize(robot.comments.count, "comment") %></p>
+			<%= link_to_if(current_user?(robot.user) || admin?(current_user), "Edit", edit_robot_path(robot), class: "button tiny secondary") {} %>
 		</div>
 	</div>
 </div>

@@ -51,7 +51,7 @@
 	color: white;
 	background-color: #333333;
 	padding: 20px 0;
-	&:nth-child(even) {
+	&:nth-of-type(odd) {
 		background-color: #282725;
 	}
 }

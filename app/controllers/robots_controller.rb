@@ -1,5 +1,8 @@
 class RobotsController < ApplicationController
-	before_action :signed_in_user, only: [:new, :create, :destroy]
+	include RobotsHelper
+
+	before_action :signed_in_user, only: [:new, :create, :destroy, :edit, :update]
+	before_action :owns_robot, only: [:edit, :update]
 
 	def index
 		@robots = Robot.reorder("created_at DESC").paginate(page: params[:page], per_page: 9)
@@ -14,6 +17,20 @@ class RobotsController < ApplicationController
 		@user = @robot.user
 		@comments = @robot.comments
 		@similar_robots = @robot.similar_robots.first(3)
+	end
+
+	def edit
+		@robot = Robot.find(params[:id])
+	end
+
+	def update
+		@robot = Robot.find(params[:id])
+
+		if @robot.update(robot_params)
+			redirect_to @robot
+		else
+			render 'new'
+		end
 	end
 
 	def new
