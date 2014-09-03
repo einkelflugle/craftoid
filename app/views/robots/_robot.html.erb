@@ -15,7 +15,10 @@
 			<% robot.categories.each do |c| %>
 				<%= link_to c.name, c, class: "label category" %>
 			<% end %>
-			<p class="body"><%= pluralize(robot.comments.count, "comment") %></p>
+			<p class="body">
+				<%= pluralize(robot.comments.count, "comment") %><br>
+				<%= pluralize(robot.views, "view") %>
+			</p>
 
 			<% if current_user?(robot.user) || admin?(current_user) %>
 				<%= link_to "Edit", edit_robot_path(robot), class: "button tiny secondary" %>

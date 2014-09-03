@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140831024215) do
+ActiveRecord::Schema.define(version: 20140903065017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140831024215) do
     t.datetime "updated_at"
     t.string   "screenshot_url"
     t.integer  "user_id"
+    t.integer  "views"
   end
 
   add_index "robots", ["tier_id"], name: "index_robots_on_tier_id", using: :btree

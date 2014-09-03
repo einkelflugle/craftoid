@@ -9,7 +9,11 @@ class RobotsController < ApplicationController
 	end
 
 	def hot
-		@robots = Robot.all.sort_by { |bot| bot.comments.count }.reverse
+		@robots = Robot.most_commented
+	end
+
+	def popular
+		@robots = Robot.most_viewed
 	end
 
 	def show
@@ -17,6 +21,8 @@ class RobotsController < ApplicationController
 		@user = @robot.user
 		@comments = @robot.comments
 		@similar_robots = @robot.similar_robots.first(3)
+
+		@robot.add_one_view
 	end
 
 	def edit

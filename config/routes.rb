@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     # Show robots by most commented
     get '/hot', to: 'robots#hot', as: :hot_robots
 
+    # Show robots by most viewed
+    get '/popular', to: 'robots#popular', as: :popular_robots
+
     # Routes for user/session handling
     resources :sessions, only: [:new, :create, :destroy]
     match '/signup', to: 'users#new', via: 'get'

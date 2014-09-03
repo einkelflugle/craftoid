@@ -7,8 +7,9 @@ class Robot < ActiveRecord::Base
 
 	validates_presence_of :name, :description, :categories, :user_id, :tier_id
 	validates :name, length: {minimum: 5}
-
 	validate :is_steam_url
+
+	before_create :initialise_view_count
 
 	def similar_robots(minimum_similar_categories = 1)
 		matches = [] # Gets set to an array of robot objects
@@ -23,10 +24,27 @@ class Robot < ActiveRecord::Base
 		matches
 	end
 
+	def add_one_view
+		self.views += 1
+		self.save
+	end
+
+	def self.most_viewed
+		Robot.all.sort_by { |robot| robot.views }.reverse
+	end
+
+	def self.most_commented
+		Robot.all.sort_by { |robot| robot.comments.count }.reverse
+	end
+
 	private
 		def is_steam_url
 			unless self.screenshot_url.include?(".steampowered.com")
 				errors.add(:screenshot_url, "isn't valid.")
 			end
+		end
+
+		def initialise_view_count
+			self.views = 0
 		end
 end
