@@ -3,4 +3,12 @@
 
 <%= render 'robots/show_by', active: "Tier", tier: @tier.name %>
 
+<% if @robots.blank? %>
+	<div class="row">
+		<div class="large-12 columns text-center">
+			<h3 class="subheader">No robots to display.</h3>
+		</div>
+	</div>
+<% end %>
+
 <%= render @robots %>
