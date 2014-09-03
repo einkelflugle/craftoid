@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     # Set the root path
     root 'welcome#index'
 
-    resources :categories
+    resources :categories, only: :show
 
     resources :robots, :users do
       resources :comments, only: [:create, :destroy]
