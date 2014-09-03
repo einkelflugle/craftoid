@@ -20,6 +20,7 @@
 				<% @robot.categories.each do |c| %>
 					<%= link_to c.name, c, class: "label category" %>
 				<% end %>
+				<p class="body"><%= pluralize(@robot.views, "view") %></p>
 				<p><%= pluralize(@robot.comments.count, "comment") %></p>
 			</div>
 		</div>
