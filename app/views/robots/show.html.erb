@@ -1,18 +1,28 @@
 <div class="row body">
 	<div class="large-12 columns">
-		<%= image_tag @robot.screenshot_url, alt: @robot.name %>
-
-		<h1>
-			<span class="label tier"><%= link_to "T" + @robot.tier.name, tier_path(@robot.tier.name) %></span>
-			<%= @robot.name %>
-		</h1>
-		<p><%= @robot.description %></p>
-		<p>By <%= link_to @user.name, @user %></p>
+		<%= link_to image_tag(@robot.screenshot_url, alt: @robot.name), @robot.screenshot_url, target: "_blank" %>
 		
-		<% if current_user?(@user) || admin?(current_user) %>
-			<%= link_to "Edit robot", edit_robot_path(@robot), class: "button" %>
-			<%= link_to "Delete robot", @robot, method: :delete, data: { confirm: 'Are you sure?' }, class: "button secondary" %>
-		<% end %>
+		<div class="row">
+			<div class="medium-8 columns">
+				<h1>
+					<span class="label tier"><%= link_to "T" + @robot.tier.name, tier_path(@robot.tier.name) %></span>
+					<%= @robot.name %>
+				</h1>
+				<p><%= @robot.description %></p>
+				<p>By <%= link_to @user.name, @user %></p>
+				
+				<% if current_user?(@user) || admin?(current_user) %>
+					<%= link_to "Edit robot", edit_robot_path(@robot), class: "button" %>
+					<%= link_to "Delete robot", @robot, method: :delete, data: { confirm: 'Are you sure?' }, class: "button secondary" %>
+				<% end %>
+			</div>
+			<div class="medium-4 columns">
+				<% @robot.categories.each do |c| %>
+					<%= link_to c.name, c, class: "label category" %>
+				<% end %>
+				<p><%= pluralize(@robot.comments.count, "comment") %></p>
+			</div>
+		</div>
 
 		<h2>Similar robots:</h2>
 	</div>
