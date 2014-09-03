@@ -19,7 +19,7 @@
 		<% if defined? tier %>
 		<dl class="sub-nav">
 			<dt>Tier:</dt>
-			<% Tier.all.each_with_index do |tier, index| %>
+			<% Tier.all.each_with_index do |t, index| %>
 				<dd class="<%= "active" if tier == "#{index + 1}" %>"><%= link_to "#{index + 1}", tier_path(index + 1) %></dd>
 			<% end %>
 		</dd>
