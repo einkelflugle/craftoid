@@ -3,7 +3,11 @@
 
 <div class="row body">
 	<div class="large-12 columns">
-		<p class="lead"><span>Definition: </span><%= @category.description %></p>
+		<p class="lead">
+			<span>Definition: </span>
+			<%= @category.description %>
+			<%= link_to_if(admin?(current_user), "Edit category", edit_category_path(@category)) {} %>
+		</p>
 	</div>
 </div>
 

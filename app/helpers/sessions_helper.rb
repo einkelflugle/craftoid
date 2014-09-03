@@ -55,7 +55,10 @@ module SessionsHelper
 
 	# Confirm the user performing an action is an admin
 	def admin_user
-		redirect_to users_path unless current_user.admin?
+		unless admin?(current_user)
+			redirect_back_or(root_url)
+			flash[:error] = "You do not have permission."
+		end
 	end
 
 	# Make sure it's the right user trying to do something

@@ -6,7 +6,7 @@
 		</h1>
 		<p class="lead"><%= pluralize(@robots.count, "robot") %></p>
 		<%= link_to "View robots", user_robots_path(@user), class: "button" %>
-		<%= link_to "Back", root_path, class: "button secondary" %>
+		<%= link_to "Back", :back, class: "button secondary" %>
 
 		<% if !@comments.blank? %>
 			<h3><%= @username %>'s comments:</h3>
