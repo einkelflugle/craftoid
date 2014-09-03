@@ -4,6 +4,7 @@
 			<dt>Show by:</dt>
 			<dd class="<%= "active" if active == "Newest" %>"><%= link_to "Newest", robots_path %></dd>
 			<dd class="<%= "active" if active == "Hot" %>"><%= link_to "Hot", hot_robots_path %></dd>
+			<dd class="<%= "active" if active == "Tier" %>"><%= link_to "Tier", tier_path(1) %></dd>
 			<% if defined? user %>
 				<dd class="<%= "active" if active == "User" %>">
 					<% if signed_in? && current_user?(user) %>
@@ -14,5 +15,20 @@
 				</dd>
 			<% end %>
 		</dl>
+		<% if defined? tier %>
+		<dl class="sub-nav">
+			<dt>Tier:</dt>
+			<dd class="<%= "active" if tier == "1" %>"><%= link_to "1", tier_path(1) %></dd>
+			<dd class="<%= "active" if tier == "2" %>"><%= link_to "2", tier_path(2) %></dd>
+			<dd class="<%= "active" if tier == "3" %>"><%= link_to "3", tier_path(3) %></dd>
+			<dd class="<%= "active" if tier == "4" %>"><%= link_to "4", tier_path(4) %></dd>
+			<dd class="<%= "active" if tier == "5" %>"><%= link_to "5", tier_path(5) %></dd>
+			<dd class="<%= "active" if tier == "6" %>"><%= link_to "6", tier_path(6) %></dd>
+			<dd class="<%= "active" if tier == "7" %>"><%= link_to "7", tier_path(7) %></dd>
+			<dd class="<%= "active" if tier == "8" %>"><%= link_to "8", tier_path(8) %></dd>
+			<dd class="<%= "active" if tier == "9" %>"><%= link_to "9", tier_path(9) %></dd>
+			<dd class="<%= "active" if tier == "10" %>"><%= link_to "10", tier_path(10) %></dd>
+		</dd>
+		<% end %>
 	</div>
 </div>

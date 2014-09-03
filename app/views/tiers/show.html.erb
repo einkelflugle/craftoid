@@ -1,4 +1,6 @@
 <% provide :hero_title, "Robots in Tier #{@tier.name}" %>
 <% provide :hero_subtitle, "Total of #{@robots.count}" %>
 
+<%= render 'robots/show_by', active: "Tier", tier: @tier.name %>
+
 <%= render @robots %>
