@@ -2,7 +2,7 @@ class Robot < ActiveRecord::Base
 	belongs_to :tier
 	belongs_to :user
 	belongs_to :competition
-	has_many :comments
+	has_many :comments, dependent: :destroy
 	has_and_belongs_to_many :categories
 
 	validates_presence_of :name, :description, :categories, :user_id, :tier_id
