@@ -1,3 +1,10 @@
 <% provide :hero_title, "Robots in the #{@category.name} category" %>
+<% provide :hero_subtitle, "Total of #{pluralize(@category.robots.count, 'robots')}" %>
+
+<div class="row body">
+	<div class="large-12 columns">
+		<p class="lead"><span>Definition: </span><%= @category.description %></p>
+	</div>
+</div>
 
 <%= render @robots %>
