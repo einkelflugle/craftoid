@@ -7,29 +7,12 @@
 			<%= @robot.name %>
 		</h1>
 		<p><%= @robot.description %></p>
-		<p>By <%= link_to @user.name, @user, data: { reveal_id: "showUser" } %></p>
+		<p>By <%= link_to @user.name, @user %></p>
 		
 		<% if current_user?(@user) || admin?(current_user) %>
 			<%= link_to "Edit robot", edit_robot_path(@robot), class: "button" %>
 			<%= link_to "Delete robot", @robot, method: :delete, data: { confirm: 'Are you sure?' }, class: "button secondary" %>
 		<% end %>
-
-		<div id="showUser" class="reveal-modal" data-reveal>
-			<div class="row">
-				<div class="large-12 columns">
-					<h2>
-						<%= gravatar_for @user %>
-						<%= link_to @user.name, @user %>
-					</h2>
-					<p class="lead">Top robots:</p>
-					<%= render @user.robots.limit(3) %>
-				</div>
-				<div class="large-12 columns body">
-					<%= link_to "View all #{@user.name}'s robots", user_robots_path(@user), class: "button" %>	
-				</div>
-			</div>
-			<a class="close-reveal-modal">&times;</a>
-		</div>
 
 		<h2>Similar robots:</h2>
 	</div>
