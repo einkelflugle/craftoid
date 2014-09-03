@@ -19,16 +19,9 @@
 		<% if defined? tier %>
 		<dl class="sub-nav">
 			<dt>Tier:</dt>
-			<dd class="<%= "active" if tier == "1" %>"><%= link_to "1", tier_path(1) %></dd>
-			<dd class="<%= "active" if tier == "2" %>"><%= link_to "2", tier_path(2) %></dd>
-			<dd class="<%= "active" if tier == "3" %>"><%= link_to "3", tier_path(3) %></dd>
-			<dd class="<%= "active" if tier == "4" %>"><%= link_to "4", tier_path(4) %></dd>
-			<dd class="<%= "active" if tier == "5" %>"><%= link_to "5", tier_path(5) %></dd>
-			<dd class="<%= "active" if tier == "6" %>"><%= link_to "6", tier_path(6) %></dd>
-			<dd class="<%= "active" if tier == "7" %>"><%= link_to "7", tier_path(7) %></dd>
-			<dd class="<%= "active" if tier == "8" %>"><%= link_to "8", tier_path(8) %></dd>
-			<dd class="<%= "active" if tier == "9" %>"><%= link_to "9", tier_path(9) %></dd>
-			<dd class="<%= "active" if tier == "10" %>"><%= link_to "10", tier_path(10) %></dd>
+			<% Tier.all.each_with_index do |tier, index| %>
+				<dd class="<%= "active" if tier == "#{index + 1}" %>"><%= link_to "#{index + 1}", tier_path(index + 1) %></dd>
+			<% end %>
 		</dd>
 		<% end %>
 	</div>
