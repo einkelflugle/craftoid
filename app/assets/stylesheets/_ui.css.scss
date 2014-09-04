@@ -25,7 +25,7 @@ select[multiple] {
 }
 
 // Give buttons Robocraft-style top right corner
-.button:not(.secondary):not(.tiny):not(.large) {
+.button:not(.secondary):not(.tiny):not(.small):not(.large) {
 	&:after {
 		content: '';
 		position: absolute;
