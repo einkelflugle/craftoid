@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903065017) do
+ActiveRecord::Schema.define(version: 20140904080107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,14 +38,20 @@ ActiveRecord::Schema.define(version: 20140903065017) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "competitions", force: true do |t|
-    t.string  "name"
-    t.text    "description"
-    t.integer "robots_id"
-    t.integer "categories_id"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "views"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "competitions", ["categories_id"], name: "index_competitions_on_categories_id", using: :btree
-  add_index "competitions", ["robots_id"], name: "index_competitions_on_robots_id", using: :btree
+  create_table "entries", force: true do |t|
+    t.integer  "robot_id"
+    t.integer  "competition_id"
+    t.integer  "votes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "robots", force: true do |t|
     t.string   "name"

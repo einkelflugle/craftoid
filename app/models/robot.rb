@@ -1,7 +1,8 @@
 class Robot < ActiveRecord::Base
 	belongs_to :tier
 	belongs_to :user
-	belongs_to :competition
+	has_many :entries, dependent: :destroy
+	has_many :competitions, through: :entries
 	has_many :comments, dependent: :destroy
 	has_and_belongs_to_many :categories
 

@@ -11,6 +11,7 @@
         <section class="top-bar-section">
             <ul class="right">
                 <% if signed_in? %>
+                    <li><%= link_to "New competition", new_competition_path %></li>
                     <li><%= link_to_if(admin?(current_user), "Create category", new_category_path) {} %></li>
                     <li class="active"><%= link_to "Create robot", new_robot_path %></li>
                     <li class="has-dropdown">

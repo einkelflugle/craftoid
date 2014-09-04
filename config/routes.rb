@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     root 'welcome#index'
 
     resources :categories, only: [:show, :create, :new, :edit, :update]
+    resources :competitions
 
     resources :robots, :users do
       resources :comments, only: [:create, :destroy]
