@@ -5,7 +5,7 @@
 			<dd class="<%= "active" if active == "Newest" %>"><%= link_to "Newest", robots_path %></dd>
 			<dd class="<%= "active" if active == "Hot" %>"><%= link_to "Hot", hot_robots_path %></dd>
 			<dd class="<%= "active" if active == "Popular" %>"><%= link_to "Popular", popular_robots_path %></dd>
-			<dd class="<%= "active" if active == "Tier" %>"><%= link_to "Tier", Tier.find_by(name: "1") %></dd>
+			<dd class="<%= "active" if active == "Tier" %>"><%= link_to "Tier", tier_path(Tier.first) %></dd>
 			<% if defined? user %>
 				<dd class="<%= "active" if active == "User" %>">
 					<% if signed_in? && current_user?(user) %>
