@@ -25,8 +25,7 @@ class Robot < ActiveRecord::Base
 	end
 
 	def add_one_view
-		self.views += 1
-		self.save
+		self.update_column(:views, views + 1)
 	end
 
 	def self.most_viewed
