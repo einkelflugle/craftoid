@@ -10,7 +10,7 @@ class Robot < ActiveRecord::Base
 	validates :name, length: {minimum: 5}
 	validate :is_steam_url
 
-	before_create :initialise_view_count
+	include Viewable
 
 	def similar_robots(minimum_similar_categories = 1)
 		matches = [] # Gets set to an array of robot objects
@@ -23,10 +23,6 @@ class Robot < ActiveRecord::Base
 			end
 		end
 		matches
-	end
-
-	def add_one_view
-		self.update_column(:views, views + 1)
 	end
 
 	def self.most_viewed
@@ -42,9 +38,5 @@ class Robot < ActiveRecord::Base
 			unless self.screenshot_url.include?(".steampowered.com")
 				errors.add(:screenshot_url, "isn't valid.")
 			end
-		end
-
-		def initialise_view_count
-			self.views = 0
 		end
 end

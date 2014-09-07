@@ -1,6 +1,12 @@
-<div class="row">
-	<div class="large-12 columns">
-		<h1><%= competition.name %></h1>
-		<p><%= competition.description %></p>
+<div class="item">
+	<div class="row">
+		<div class="large-8 columns">
+			<h1><%= link_to competition.name, competition %></h1>
+			<p><%= truncate(competition.description, length: 200, separator: ' ', omission: '... ') { link_to "more", competition } %></p>
+		</div>
+		<div class="large-4 columns">
+			<p><%= pluralize(competition.views, "view") %></p>
+			<p><%= pluralize(competition.robots.count, "robot") %></p>
+		</div>
 	</div>
 </div>

@@ -4,7 +4,12 @@ Rails.application.routes.draw do
     root 'welcome#index'
 
     resources :categories, only: [:show, :create, :new, :edit, :update]
-    resources :competitions
+    
+    resources :competitions do
+        resources :entries, only: [:new, :create] do
+            post 'vote', on: :member
+        end
+    end
 
     resources :robots, :users do
       resources :comments, only: [:create, :destroy]

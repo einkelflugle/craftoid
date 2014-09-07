@@ -1,0 +1,9 @@
+<% provide :hero_title, "Newest competitions" %>
+
+<div class="row body">
+	<div class="large-12 columns">
+		<%= link_to "Create competition", new_competition_path, class: "button" %>
+	</div>
+</div>
+
+<%= render @competitions %>

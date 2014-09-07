@@ -8,6 +8,13 @@ class CompetitionsController < ApplicationController
 
 	def show
 		@competition = Competition.find(params[:id])
+
+		session[:viewed_competitions] ||= []
+
+		unless session[:viewed_competitions].include?(@competition.id)
+			@competition.add_one_view
+			session[:viewed_competitions] << @competition.id
+		end
 	end
 
 	def new
