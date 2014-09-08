@@ -20,6 +20,12 @@
 	}
 }
 
+// Makes the navbar dropdowns a bit more visible
+.top-bar-section li .dropdown {
+	border: 1px solid black;
+	border-top: none;
+}
+
 // Gives a content wrapper a bit of extra top padding
 .body {
 	padding-top: 1.25rem;
