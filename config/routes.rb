@@ -9,10 +9,18 @@ Rails.application.routes.draw do
         resources :entries, only: [:new, :create] do
             post 'vote', on: :member
         end
+        collection do
+            get 'hot'
+            get 'popular'
+        end
     end
 
-    resources :robots, :users do
-      resources :comments, only: [:create, :destroy]
+    resources :robots do
+        resources :comments, only: [:create, :destroy]
+        collection do
+            get 'hot'
+            get 'popular'
+        end
     end
 
     resources :users do

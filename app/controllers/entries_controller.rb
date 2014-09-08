@@ -6,6 +6,7 @@ class EntriesController < ApplicationController
 		@entry = @competition.entries.build(entry_params)
 		if @entry.save
 			redirect_to @competition
+			flash[:success] = "Successfully entered #{@entry.robot.name}"
 		else
 			flash[:error] = "Try again."
 		end
@@ -17,9 +18,11 @@ class EntriesController < ApplicationController
 
 		session[:voted_for_entries] ||= []
 
-		unless session[:voted_for_entries].include?(@entry.id)
+		if !session[:voted_for_entries].include?(@entry.id)
 			@entry.add_one_vote
 			session[:voted_for_entries] << @entry.id
+		else
+			flash[:error] = "You have already voted for this entry."
 		end
 
 		redirect_to @competition
