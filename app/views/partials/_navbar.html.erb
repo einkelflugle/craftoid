@@ -22,7 +22,7 @@
                         <a href="#">Create</a>
                         <ul class="dropdown">
                             <li><%= link_to "Robot", new_robot_path %></li>
-                            <li><%= link_to "Competition", competitions_path %></li>
+                            <li><%= link_to "Competition", new_competition_path %></li>
                             <li><%= link_to_if(admin?(current_user), "Category", new_category_path) {} %></li>
                         </ul>
                     </li>
