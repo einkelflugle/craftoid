@@ -16,6 +16,7 @@ class CompetitionsController < ApplicationController
 
 	def show
 		@competition = Competition.find(params[:id])
+		@user = User.find(@competition.user_id)
 		@enterable_robots = current_user.robots - @competition.robots
 		@has_enterable_robots = !@enterable_robots.blank?
 
