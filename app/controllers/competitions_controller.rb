@@ -32,7 +32,7 @@ class CompetitionsController < ApplicationController
 	end
 
 	def create
-		@competition = Competition.new(competition_params)
+		@competition = current_user.competitions.build(competition_params)
 		if @competition.save
 			redirect_to @competition
 		else
