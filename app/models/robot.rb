@@ -1,7 +1,8 @@
 class Robot < ActiveRecord::Base
 	belongs_to :tier
 	belongs_to :user
-	belongs_to :competition
+	has_many :entries, dependent: :destroy
+	has_many :competitions, through: :entries
 	has_many :comments, dependent: :destroy
 	has_and_belongs_to_many :categories
 
@@ -9,7 +10,7 @@ class Robot < ActiveRecord::Base
 	validates :name, length: {minimum: 5}
 	validate :is_steam_url
 
-	before_create :initialise_view_count
+	include Viewable
 
 	def similar_robots(minimum_similar_categories = 1)
 		matches = [] # Gets set to an array of robot objects
@@ -24,14 +25,6 @@ class Robot < ActiveRecord::Base
 		matches
 	end
 
-	def add_one_view
-		self.update_column(:views, views + 1)
-	end
-
-	def self.most_viewed
-		Robot.all.sort_by { |robot| robot.views }.reverse
-	end
-
 	def self.most_commented
 		Robot.all.sort_by { |robot| robot.comments.count }.reverse
 	end
@@ -41,9 +34,5 @@ class Robot < ActiveRecord::Base
 			unless self.screenshot_url.include?(".steampowered.com")
 				errors.add(:screenshot_url, "isn't valid.")
 			end
-		end
-
-		def initialise_view_count
-			self.views = 0
 		end
 end

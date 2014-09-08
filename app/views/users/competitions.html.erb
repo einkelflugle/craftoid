@@ -1,0 +1,16 @@
+<% provide :hero_title, "#{@user.name}'s competitions" %>
+
+<%= render 'competitions/show_by', active: "User", user: @user %>
+
+<% if @competitions.blank? %>
+	<div class="row">
+		<div class="large-12 columns text-center">
+			<h3 class="subheader">No competitions to display.</h3>
+			<% if current_user?(@user) %>
+				<p>Why not <%= link_to "create one?", new_competition_path %></p>
+			<% end %>
+		</div>
+	</div>
+<% end %>
+
+<%= render @competitions %>
