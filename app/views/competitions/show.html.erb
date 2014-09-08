@@ -1,0 +1,27 @@
+<% provide :hero_title, @competition.name %>
+<% provide :hero_subtitle, pluralize(@competition.robots.count, "entry") %>
+
+<div class="row body">
+	<div class="large-8 columns">
+		<p><%= @competition.description %></p>
+	</div>
+	<div class="large-4 columns">
+		<p><%= pluralize(@competition.views, "view") %></p>
+		<hr>
+		<% if signed_in? %>
+			<% if !@has_enterable_robots %>
+				<p class="text-center">You don't have any robots to enter.</br>Why not <%= link_to "create one?", new_robot_path %></p>
+			<% else %>
+				<%= render 'entries/form' %>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+
+<div class="row body">
+	<div class="large-12 columns">
+		<h2>Latest entries:</h2>
+	</div>
+</div>
+
+<%= render @competition.entries.all %>

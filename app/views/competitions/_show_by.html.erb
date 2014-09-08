@@ -2,15 +2,14 @@
 	<div class="large-12 columns body">
 		<dl class="sub-nav">
 			<dt>Show by:</dt>
-			<dd class="<%= "active" if active == "Newest" %>"><%= link_to "Newest", robots_path %></dd>
-			<dd class="<%= "active" if active == "Hot" %>"><%= link_to "Hot", hot_robots_path %></dd>
-			<dd class="<%= "active" if active == "Popular" %>"><%= link_to "Popular", popular_robots_path %></dd>
-			<dd class="<%= "active" if active == "Tier" %>"><%= link_to "Tier", tier_path(Tier.first.name) %></dd>
+			<dd class="<%= "active" if active == "Newest" %>"><%= link_to "Newest", competitions_path %></dd>
+			<dd class="<%= "active" if active == "Hot" %>"><%= link_to "Hot", hot_competitions_path %></dd>
+			<dd class="<%= "active" if active == "Popular" %>"><%= link_to "Popular", popular_competitions_path %></dd>
 			<dd class="<%= "active" if active == "User" %>">
 			<% if defined?(user) && !current_user?(user) %>
-				<%= link_to "By #{user.name}", robots_user_path(user) %>
+				<%= link_to "By #{user.name}", competitions_user_path(user) %>
 			<% elsif signed_in? %>
-				<%= link_to "By me", robots_user_path(current_user) %>
+				<%= link_to "By me", competitions_user_path(current_user) %>
 			<% end %>
 			</dd>
 		</dl>

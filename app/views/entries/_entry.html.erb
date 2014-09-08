@@ -1,0 +1,26 @@
+<% robot = Robot.find(entry.robot_id) %>
+
+<div class="item">
+	<div class="row">
+		<div class="large-3 medium-4 columns">
+			<%= link_to image_tag(robot.screenshot_url + "288x162.resizedImage", alt: robot.name), robot %>
+		</div>
+		<div class="large-6 medium-8 columns">
+			<h2>
+				<span class="label tier"><%= link_to "T" + robot.tier.name, tier_path(robot.tier.name) %></span>
+				<%= link_to robot.name, robot %>
+			</h2>
+			<p>by <%= link_to robot.user.name, robot.user %> <%= time_ago_in_words(entry.created_at) %> ago</p>
+			<p><%= truncate(robot.description, length: 100) %></p>
+		</div>
+		<div class="large-3 columns">
+			<%# robot.categories.each do |c| %>
+				<%# link_to c.name, c, class: "label category" %>
+			<%# end %>
+			<p class="body">
+				<%= pluralize(entry.votes, "vote") %><br>
+				<%= link_to "Vote", vote_competition_entry_path(@competition, entry), method: 'post', class: "button" %>
+			</p>
+		</div>
+	</div>
+</div>

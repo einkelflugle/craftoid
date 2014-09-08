@@ -1,0 +1,5 @@
+<p>Enter with one your robots:</p>
+<%= form_for [@competition, @competition.entries.build] do |f| %>
+	<%= f.collection_select :robot_id, current_user.robots - @competition.robots, :id, :name %>
+	<%= button_tag "Enter competition", class: "button" %>
+<% end %>

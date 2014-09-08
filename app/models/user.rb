@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :robots, dependent: :destroy
 	has_many :comments, dependent: :destroy
+	has_many :competitions, dependent: :destroy
 
 	has_secure_password
 

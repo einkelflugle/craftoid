@@ -1,0 +1,19 @@
+<%= form_for @competition do |f| %>
+
+	<% if @competition.errors.any? %>
+		<% @competition.errors.full_messages.each do |msg| %>
+		<div data-alert class="alert-box alert">
+			<%= msg %>
+			<a href="#" class="close">&times;</a>
+		</div>
+		<% end %>
+	<% end %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.label :description %>
+	<%= f.text_area :description %>
+
+	<%= button_tag "Submit", class: "button" %>
+<% end %>

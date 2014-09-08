@@ -22,11 +22,11 @@ class RobotsController < ApplicationController
 		@comments = @robot.comments
 		@similar_robots = @robot.similar_robots.first(3)
 
-		session[:viewed] ||= []
+		session[:viewed_robots] ||= []
 
-		unless session[:viewed].include?(@robot.id)
+		unless session[:viewed_robots].include?(@robot.id)
 			@robot.add_one_view
-			session[:viewed] << @robot.id
+			session[:viewed_robots] << @robot.id
 		end
 	end
 
