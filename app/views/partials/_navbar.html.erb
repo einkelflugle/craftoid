@@ -9,19 +9,30 @@
         </ul>
 
         <section class="top-bar-section">
+            <ul class="left">
+                <li class="has-dropdown">
+                    <a href="#">Browse</a>
+                    <ul class="dropdown">
+                        <li><%= link_to "Robots", robots_path %></li>
+                        <li><%= link_to "Competitions", competitions_path %></li>
+                    </ul>
+                </li>
+                <% if signed_in? %>
+                    <li class="has-dropdown">
+                        <a href="#">Create</a>
+                        <ul class="dropdown">
+                            <li><%= link_to "Robot", new_robot_path %></li>
+                            <li><%= link_to "Competition", competitions_path %></li>
+                            <li><%= link_to_if(admin?(current_user), "Category", new_category_path) {} %></li>
+                        </ul>
+                    </li>
+                <% end %>
+            </ul>
             <ul class="right">
                 <% if signed_in? %>
-                    <li><%= link_to_if(admin?(current_user), "Create category", new_category_path) {} %></li>
-                    <li class="active"><%= link_to "Create robot", new_robot_path %></li>
                     <li class="has-dropdown">
                         <%= link_to current_user.name, '#' %>
                         <ul class="dropdown">
-                            <li><%= link_to "All users", users_path %></li>
-                            <li><%= link_to "All competitions", competitions_path %></li>
-                            <li class="divider"></li>
-                            <li><%= link_to "My robots", user_robots_path(current_user) %></li>
-                            <li><a href="#">My Competition Entries</a></li>
-                            <li class="divider"></li>
                             <li><%= link_to "Profile", current_user %></li>
                             <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                             <li><%= link_to "Sign out", signout_path, method: 'delete' %></li>
