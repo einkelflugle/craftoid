@@ -6,15 +6,13 @@
 			<dd class="<%= "active" if active == "Hot" %>"><%= link_to "Hot", hot_robots_path %></dd>
 			<dd class="<%= "active" if active == "Popular" %>"><%= link_to "Popular", popular_robots_path %></dd>
 			<dd class="<%= "active" if active == "Tier" %>"><%= link_to "Tier", tier_path(Tier.first.name) %></dd>
-			<% if defined? user %>
-				<dd class="<%= "active" if active == "User" %>">
-					<% if signed_in? && current_user?(user) %>
-						<%= link_to "By me", user_robots_path(current_user) %>
-					<% else %>
-						<%= link_to "By #{user.name}", user_robots_path(user) %>
-					<% end %>
-				</dd>
+			<dd class="<%= "active" if active == "User" %>">
+			<% if defined?(user) && !current_user?(user) %>
+				<%= link_to "By #{user.name}", robots_user_path(user) %>
+			<% elsif signed_in? %>
+				<%= link_to "By me", robots_user_path(current_user) %>
 			<% end %>
+			</dd>
 		</dl>
 		<% if defined? tier %>
 		<dl class="sub-nav">
