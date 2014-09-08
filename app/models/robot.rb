@@ -25,10 +25,6 @@ class Robot < ActiveRecord::Base
 		matches
 	end
 
-	def self.most_viewed
-		Robot.all.sort_by { |robot| robot.views }.reverse
-	end
-
 	def self.most_commented
 		Robot.all.sort_by { |robot| robot.comments.count }.reverse
 	end

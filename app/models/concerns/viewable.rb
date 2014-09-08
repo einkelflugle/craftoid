@@ -12,4 +12,10 @@ module Viewable
 	def initialise_view_count
 		self.views = 0
 	end
+
+	module ClassMethods
+		def most_viewed
+			self.all.sort_by { |item| item.views }.reverse
+		end
+	end
 end
