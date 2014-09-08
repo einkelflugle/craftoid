@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="large-12 columns body">
+		<dl class="sub-nav">
+			<dt>Show by:</dt>
+			<dd class="<%= "active" if active == "Newest" %>"><%= link_to "Newest", competitions_path %></dd>
+			<dd class="<%= "active" if active == "Hot" %>"><%= link_to "Hot", hot_competitions_path %></dd>
+			<dd class="<%= "active" if active == "Popular" %>"><%= link_to "Popular", popular_competitions_path %></dd>
+			<dd class="<%= "active" if active == "User" %>">
+			<% if defined?(user) && !current_user?(user) %>
+				<%= link_to "By #{user.name}", competitions_user_path(user) %>
+			<% elsif signed_in? %>
+				<%= link_to "By me", competitions_user_path(current_user) %>
+			<% end %>
+			</dd>
+		</dl>
+		<% if defined? tier %>
+		<dl class="sub-nav">
+			<dt>Tier:</dt>
+			<% Tier.all.each_with_index do |t, index| %>
+				<dd class="<%= "active" if tier == "#{index + 1}" %>"><%= link_to "#{index + 1}", tier_path(index + 1) %></dd>
+			<% end %>
+		</dd>
+		<% end %>
+	</div>
+</div>

@@ -1,9 +1,11 @@
 <% provide :hero_title, "Newest competitions" %>
 
-<div class="row body">
-	<div class="large-12 columns">
-		<%= link_to "Create competition", new_competition_path, class: "button" %>
-	</div>
-</div>
+<%= render 'show_by', active: "Newest" %>
 
 <%= render @competitions %>
+
+<div class="pagination-outer">
+	<div class="row">
+		<%= will_paginate renderer: FoundationPagination::Rails %>
+	</div>
+</div>

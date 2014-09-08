@@ -7,4 +7,8 @@ class Competition < ActiveRecord::Base
 	validates :description, presence: true, length: { minimum: 5, maximum: 2500 }
 
 	include Viewable
+
+	def self.most_entered
+		Competition.all.sort_by { |competition| competition.entries.count }.reverse
+	end
 end
