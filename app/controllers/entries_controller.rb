@@ -1,5 +1,8 @@
 class EntriesController < ApplicationController
+	include EntriesHelper
+
 	before_action :signed_in_user
+	before_action :owns_entry, only: [:destroy]
 
 	def create
 		@competition = Competition.find(params[:competition_id])
@@ -10,6 +13,13 @@ class EntriesController < ApplicationController
 		else
 			flash[:error] = "Try again."
 		end
+	end
+
+	def destroy
+		@competition = Competition.find(params[:competition_id])
+		@entry = Entry.find(params[:id])
+		@entry.destroy
+		redirect_to @competition
 	end
 
 	def vote

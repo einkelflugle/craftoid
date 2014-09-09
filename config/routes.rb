@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:show, :create, :new, :edit, :update]
     
     resources :competitions do
-        resources :entries, only: [:new, :create] do
+        resources :entries, only: [:new, :create, :destroy] do
             post 'vote', on: :member
         end
         collection do
