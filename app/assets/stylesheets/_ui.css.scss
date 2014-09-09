@@ -12,6 +12,10 @@
 .button {
 	position: relative;
 	margin-right: 1em;
+	&.tiny {
+		-webkit-font-smoothing: subpixel-antialiasing;
+		-moz-osx-font-smoothing: auto;
+	}
 }
 
 // Customize Foundation to suit Rails' flash notices
