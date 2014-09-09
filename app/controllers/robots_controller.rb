@@ -40,7 +40,7 @@ class RobotsController < ApplicationController
 		if @robot.update(robot_params)
 			redirect_to @robot
 		else
-			render 'new'
+			render 'edit'
 		end
 	end
 
