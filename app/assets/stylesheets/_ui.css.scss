@@ -31,6 +31,15 @@ select[multiple] {
 	height: auto;
 }
 
+// Gives select elements a bit of extra breathing room to the right
+select {
+	width: auto;
+	padding-right: 1.5rem;
+}
+select.full-width {
+	width: 100%;
+}
+
 // Give buttons Robocraft-style top right corner
 .button:not(.secondary):not(.tiny):not(.small):not(.large) {
 	&:after {
