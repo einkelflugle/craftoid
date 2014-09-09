@@ -1,6 +1,7 @@
 class Competition < ActiveRecord::Base
 	has_many :entries, dependent: :destroy
 	has_many :robots, through: :entries
+	has_and_belongs_to_many :categories
 	belongs_to :user
 
 	validates :name, presence: true, length: { minimum: 5, maximum: 30 }

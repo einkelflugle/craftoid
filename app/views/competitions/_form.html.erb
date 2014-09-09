@@ -15,5 +15,11 @@
 	<%= f.label :description %>
 	<%= f.text_area :description %>
 
+	<%= f.label :categories %>
+	<% Category.all.each do |c| %>
+		<%= check_box_tag "competition[category_ids][]", c.id, @competition.categories.include?(c) %>
+		<%= c.name %><br>
+	<% end %>
+
 	<%= button_tag "Submit", class: "button" %>
 <% end %>
