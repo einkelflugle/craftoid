@@ -1,5 +1,7 @@
-<p>Enter with one your robots:</p>
-<%= form_for [@competition, @competition.entries.build] do |f| %>
-	<%= f.collection_select :robot_id, current_user.robots - @competition.robots, :id, :name %>
-	<%= button_tag "Enter competition", class: "button" %>
-<% end %>			<%= f.collection_select :robot_id, @enterable_robots, :id, :name %>
+<div class="panel callout">
+	<%= form_for [@competition, @competition.entries.build] do |f| %>
+			Enter with one your robots: 
+			<%= f.collection_select :robot_id, @enterable_robots, :id, :name %>
+			<%= button_tag "Enter competition", class: "button small no-bottom-margin" %>
+	<% end %>
+</div>

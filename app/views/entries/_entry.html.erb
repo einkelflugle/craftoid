@@ -14,13 +14,16 @@
 			<p><%= truncate(robot.description, length: 100) %></p>
 		</div>
 		<div class="large-3 columns">
-			<%# robot.categories.each do |c| %>
-				<%# link_to c.name, c, class: "label category" %>
-			<%# end %>
-			<p class="body">
-				<%= pluralize(entry.votes, "vote") %><br>
-				<%= link_to "Vote", vote_competition_entry_path(@competition, entry), method: 'post', class: "button" %>
-			</p>
+			<% robot.categories.each do |c| %>
+				<%= link_to c.name, c, class: "label category" %>
+			<% end %>
+			<p class="body"><%= pluralize(entry.votes, "vote") %></p>
+
+			<%= link_to "Vote", vote_competition_entry_path(@competition, entry), method: 'post', class: "button tiny" %>
+
+			<% if current_user?(robot.user) || admin?(current_user) %>
+				<%= link_to "Delete", [@competition, entry], method: :delete, data: { confirm: "Are you sure? This will remove all of its votes." }, class: "button tiny alert" %>
+			<% end %>
 		</div>
 	</div>
 </div>

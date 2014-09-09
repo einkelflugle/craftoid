@@ -3,11 +3,6 @@
 
 <div class="row body">
 	<div class="large-8 columns">
-		<p><%= @competition.description %></p>
-	</div>
-	<div class="large-4 columns">
-		<p><%= pluralize(@competition.views, "view") %></p>
-		<p>by <%= link_to @user.name, @user %>, <%= time_ago_in_words(@competition.created_at) %> ago</p>
 		<p class="lead"><%= @competition.description %></p>
 		<hr>
 
@@ -17,6 +12,21 @@
 			<% else %>
 				<%= render 'entries/form' %>
 			<% end %>
+		<% else %>
+			<p class="text-center"><%= link_to "Sign in", signin_path %> to enter this competition.</p>
+		<% end %>
+	</div>
+	<div class="large-4 columns">
+		<span>Open categories:</span>
+		<% @competition.categories.each do |c| %>
+			<%= link_to c.name, c, class: "label category" %>
+		<% end %>
+		<p class="body"><%= pluralize(@competition.views, "view") %></p>
+		<p>by <%= link_to @user.name, @user %>, <%= time_ago_in_words(@competition.created_at) %> ago</p>
+
+		<% if current_user?(@competition.user) || admin?(current_user) %>
+			<%= link_to "Edit", edit_competition_path(@competition), class: "button tiny secondary" %>
+			<%= link_to "Delete", @competition, method: :delete, data: { confirm: "Are you sure?" }, class: "button tiny alert" %>
 		<% end %>
 	</div>
 </div>
