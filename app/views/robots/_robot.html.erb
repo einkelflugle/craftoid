@@ -1,6 +1,6 @@
 <div class="item">
 	<div class="row">
-		<div class="large-3 medium-4 columns">
+		<div class="large-3 medium-12 columns text-center">
 			<%= link_to image_tag(robot.screenshot_url + "288x162.resizedImage", alt: robot.name), robot %>
 		</div>
 		<div class="large-6 medium-8 columns">
@@ -9,15 +9,16 @@
 				<%= link_to robot.name, robot %>
 			</h2>
 			<p>by <%= link_to robot.user.name, robot.user %> <%= time_ago_in_words(robot.created_at) %> ago</p>
-			<p><%= truncate(robot.description, length: 100) %></p>
+			<p><%= truncate(robot.description, length: 200) %></p>
 		</div>
-		<div class="large-3 columns">
+		<div class="large-3 medium-4 columns">
 			<% robot.categories.each do |c| %>
 				<%= link_to c.name, c, class: "label category" %>
 			<% end %>
 			<p class="body">
 				<%= pluralize(robot.comments.count, "comment") %><br>
-				<%= pluralize(robot.views, "view") %>
+				<%= pluralize(robot.views, "view") %><br>
+				<%= pluralize(robot.entries.count, "entry") %>
 			</p>
 
 			<% if current_user?(robot.user) || admin?(current_user) %>
