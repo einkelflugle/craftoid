@@ -1,6 +1,8 @@
 class CompetitionsController < ApplicationController
+	include CompetitionsHelper
 	
-	before_action :signed_in_user, except: [:index, :hot, :popular]
+	before_action :signed_in_user, except: [:index, :hot, :popular, :show]
+	before_action :owns_competition, only: [:edit, :update, :destroy]
 
 	def index
 		@competitions = Competition.reorder("created_at DESC").paginate(page: params[:page], per_page: 9)
@@ -41,6 +43,26 @@ class CompetitionsController < ApplicationController
 		else
 			render 'new'
 		end
+	end
+
+	def edit
+		@competition = Competition.find(params[:id])
+	end
+
+	def update
+		@competition = Competition.find(params[:id])
+
+		if @competition.update(competition_params)
+			redirect_to @competition
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@competition = Competition.find(params[:id])
+		@competition.destroy
+		redirect_to competitions_path
 	end
 
 	private
