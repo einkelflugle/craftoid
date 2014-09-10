@@ -21,7 +21,7 @@
 		<% @competition.categories.each do |c| %>
 			<%= link_to c.name, c, class: "label category" %>
 		<% end %>
-		<p class="body"><%= pluralize(@competition.views, "view") %></p>
+		<p class="body"><%= pluralize(@competition.views, "view") %>, <%= link_to pluralize(@competition.entries.count, "entry"), competition_entries_path(@competition) %></p>
 		<p>by <%= link_to @user.name, @user %>, <%= time_ago_in_words(@competition.created_at) %> ago</p>
 
 		<% if current_user?(@competition.user) || admin?(current_user) %>
