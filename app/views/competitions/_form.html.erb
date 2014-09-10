@@ -17,7 +17,7 @@
 
 	<%= f.label :categories %>
 	<% Category.all.each do |c| %>
-		<%= check_box_tag "competition[category_ids][]", c.id, @competition.categories.include?(c) %>
+		<%= check_box_tag "competition[category_ids][]", c.id, @competition.categories.include?(c), disabled: @competition.categories.include?(c) %>
 		<%= c.name %><br>
 	<% end %>
 
