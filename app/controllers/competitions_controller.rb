@@ -20,7 +20,7 @@ class CompetitionsController < ApplicationController
 		@competition = Competition.find(params[:id])
 		@user = User.find(@competition.user_id)
 		if signed_in?
-			@enterable_robots = current_user.robots - @competition.robots
+			@enterable_robots = current_user.enterable_robots(@competition)
 			@has_enterable_robots = !@enterable_robots.blank?
 		end
 

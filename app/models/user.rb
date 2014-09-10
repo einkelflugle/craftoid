@@ -21,6 +21,22 @@ class User < ActiveRecord::Base
 		Digest::SHA1.hexdigest(token.to_s)
 	end
 
+	def enterable_robots(competition)
+		enterable = []
+
+		# Makes sure there is at least 1 common category
+		self.robots.each do |robot|
+			if (robot.categories & competition.categories).present?
+				enterable.push(robot)
+			end
+		end
+
+		# Remove all the robots that have already been entered
+		enterable -= competition.robots
+
+		enterable
+	end
+
 	private
 		def create_remember_token
 			self.remember_token = User.digest(User.new_remember_token)
