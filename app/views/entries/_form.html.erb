@@ -2,6 +2,6 @@
 	<%= form_for [@competition, @competition.entries.build] do |f| %>
 			Enter with one your robots: 
 			<%= f.collection_select :robot_id, @enterable_robots, :id, :name %>
-			<%= button_tag "Enter competition", class: "button small no-bottom-margin" %>
+			<%= button_tag "Enter competition", class: "button small no-bottom-margin right" %>
 	<% end %>
 </div>
