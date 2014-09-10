@@ -1,8 +1,18 @@
 class EntriesController < ApplicationController
 	include EntriesHelper
 
-	before_action :signed_in_user
+	before_action :signed_in_user, except: [:index, :popular]
 	before_action :owns_entry, only: [:destroy]
+
+	def index
+		@competition = Competition.find(params[:competition_id])
+		@entries = @competition.entries.paginate(page: params[:page], per_page: 9)
+	end
+
+	def popular
+		@competition = Competition.find(params[:competition_id])
+		@entries = @competition.entries.paginate(page: params[:page], per_page: 9).sort_by { |e| e.votes }.reverse
+	end
 
 	def create
 		@competition = Competition.find(params[:competition_id])

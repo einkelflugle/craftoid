@@ -58,6 +58,11 @@ class UsersController < ApplicationController
 		@competitions = Competition.where(user_id: @user.id).sort_by { |competition| competition.entries.count }.reverse
 	end
 
+	def entries
+		@user = User.find(params[:id])
+		@entries = @user.robots.entries
+	end
+
 	private
 		def user_params
 			params.require(:user).permit(:name, :email, :password, :password_confirmation)

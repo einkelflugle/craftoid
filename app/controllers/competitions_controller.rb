@@ -18,7 +18,9 @@ class CompetitionsController < ApplicationController
 
 	def show
 		@competition = Competition.find(params[:id])
+		@entries = @competition.entries.all.sort_by { |entry| entry.votes }.reverse.take(5)
 		@user = User.find(@competition.user_id)
+		
 		if signed_in?
 			@enterable_robots = current_user.enterable_robots(@competition)
 			@has_enterable_robots = !@enterable_robots.blank?

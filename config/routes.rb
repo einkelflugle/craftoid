@@ -6,8 +6,11 @@ Rails.application.routes.draw do
     resources :categories, only: [:show, :create, :new, :edit, :update]
     
     resources :competitions do
-        resources :entries, only: [:new, :create, :destroy] do
+        resources :entries, only: [:index, :new, :create, :destroy] do
             post 'vote', on: :member
+            collection do
+                get 'popular'
+            end
         end
         collection do
             get 'hot'

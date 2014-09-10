@@ -1,0 +1,6 @@
+<% provide :hero_title, "Popular entries" %>
+<% provide :hero_subtitle, "For \"#{@competition.name}\"" %>
+
+<%= render 'show_by', active: "Popular" %>
+
+<%= render @entries %>

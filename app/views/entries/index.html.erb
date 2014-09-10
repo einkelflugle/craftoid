@@ -1,0 +1,11 @@
+<% provide :hero_title, "Newest entries" %>
+<% provide :hero_subtitle, "For \"#{@competition.name}\"" %>
+
+<%= render 'show_by', active: "Newest" %>
+
+<%= render @entries %>
+<div class="pagination-outer">
+	<div class="row">
+		<%= will_paginate renderer: FoundationPagination::Rails %>
+	</div>
+</div>
