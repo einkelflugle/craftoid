@@ -4,6 +4,12 @@
 <%= render 'show_by', active: "Popular" %>
 
 <%= render @entries %>
+<div class="pagination-outer">
+	<div class="row">
+		<%= will_paginate renderer: FoundationPagination::Rails %>
+	</div>
+</div>
+
 <div class="row body">
 	<div class="large-2 columns large-centered">
 		<%= link_to "Back", @competition, class: "button secondary extend" %>

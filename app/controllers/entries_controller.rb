@@ -11,7 +11,7 @@ class EntriesController < ApplicationController
 
 	def popular
 		@competition = Competition.find(params[:competition_id])
-		@entries = @competition.entries.paginate(page: params[:page], per_page: 9).sort_by { |e| e.votes }.reverse
+		@entries = @competition.entries.order('votes DESC').paginate(page: params[:page], per_page: 9)
 	end
 
 	def create
