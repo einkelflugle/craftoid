@@ -7,8 +7,9 @@
 			</h3>
 		</div>
 		<div class="large-4 columns">
-			<p><%= user.robots.count %> robots</p>
-			<p><%= user.comments.count %> comments</p>
+			<p><%= pluralize(user.robots.count, "robot") %></p>
+			<p><%= pluralize(user.comments.count, "comment") %></p>
+			<p><%= pluralize(user.num_entries, "entry") %></p>
 		</div>
 		<div class="large-2 columns">
 			<% if admin?(current_user) && !current_user?(user) %>

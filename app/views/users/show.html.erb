@@ -5,6 +5,7 @@
 			<%= @username %>
 		</h1>
 		<p class="lead"><%= pluralize(@robots.count, "robot") %></p>
+		<p class="lead"><%= pluralize(@user.num_entries, "entry") %></p>
 		<%= link_to "View robots", robots_user_path(@user), class: "button" %>
 		<%= link_to "Back", :back, class: "button secondary" %>
 
