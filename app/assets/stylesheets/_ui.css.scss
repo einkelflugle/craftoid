@@ -3,6 +3,11 @@
 	color: red;
 }
 
+// Adds bottom border to navbar (helps with visibility)
+.contain-to-grid {
+	border-bottom: 1px solid black;
+}
+
 // Change alert button to deeper red
 .button.alert {
 	background-color: $alert-color-dark;
