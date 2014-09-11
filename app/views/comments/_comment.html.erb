@@ -1,5 +1,5 @@
 <div class="body row">
-	<div class="large-12 columns dark body">
+	<div class="large-12 columns dark body <%= "important-comment" if comment.user.admin? %>">
 		<p class="lead"><%= comment.body %></p>
 		<p>
 			by <%= link_to comment.user.name, comment.user %>, <%= time_ago_in_words(comment.created_at) %> ago
