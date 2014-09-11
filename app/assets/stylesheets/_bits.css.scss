@@ -3,6 +3,9 @@
 	font-size: $h6-font-size;
 	color: black;
 	@include single-transition(0.2s, background-color, ease-out);
+	&:not(.tier) {
+		margin-bottom: 4px;
+	}
 	&:hover {
 		color: black;
 		background-color: darken($primary-color, 10%);
