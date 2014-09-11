@@ -37,6 +37,15 @@ class User < ActiveRecord::Base
 		enterable
 	end
 
+	# TODO: make less hacky
+	def num_entries
+		num = 0
+		self.robots.each do |robot|
+			num += Entry.where(robot_id: robot.id).count
+		end
+		num
+	end
+
 	private
 		def create_remember_token
 			self.remember_token = User.digest(User.new_remember_token)
