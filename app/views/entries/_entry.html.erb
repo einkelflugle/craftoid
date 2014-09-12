@@ -19,10 +19,10 @@
 			<% end %>
 			<p class="body"><%= pluralize(entry.votes, "vote") %></p>
 
-			<%= link_to "Vote", vote_competition_entry_path(@competition, entry), method: 'post', class: "button tiny" %>
+			<%= link_to_if(@competition.open?, "Vote", vote_competition_entry_path(@competition, entry), method: 'post', class: "button tiny") {} %>
 
 			<% if current_user?(robot.user) || admin?(current_user) %>
-				<%= link_to "Delete", [@competition, entry], method: :delete, data: { confirm: "Are you sure? This will remove all of its votes." }, class: "button tiny alert" %>
+				<%= link_to_if(@competition.open?, "Delete", [@competition, entry], method: :delete, data: { confirm: "Are you sure? This will remove all of its votes." }, class: "button tiny alert") {} %>
 			<% end %>
 		</div>
 	</div>

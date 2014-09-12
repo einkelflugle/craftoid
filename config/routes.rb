@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:show, :create, :new, :edit, :update]
     
     resources :competitions do
+        post 'close', on: :member
         resources :entries, only: [:index, :new, :create, :destroy] do
             post 'vote', on: :member
             collection do

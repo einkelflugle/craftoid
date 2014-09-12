@@ -2,7 +2,7 @@ class CompetitionsController < ApplicationController
 	include CompetitionsHelper
 	
 	before_action :signed_in_user, except: [:index, :hot, :popular, :show]
-	before_action :owns_competition, only: [:edit, :update, :destroy]
+	before_action :owns_competition, only: [:edit, :update, :destroy, :close]
 
 	def index
 		@competitions = Competition.reorder("created_at DESC").paginate(page: params[:page], per_page: 9)
@@ -65,6 +65,19 @@ class CompetitionsController < ApplicationController
 		@competition = Competition.find(params[:id])
 		@competition.destroy
 		redirect_to competitions_path
+	end
+
+	def close
+		@competition = Competition.find(params[:id])
+
+		if @competition.open?
+			@competition.update_attribute(:open, false)
+			flash[:success] = "Successfully closed #{@competition.name}"
+		else
+			flash[:error] = "This competition has already been closed."
+		end
+
+		redirect_to @competition
 	end
 
 	private

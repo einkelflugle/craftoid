@@ -7,4 +7,13 @@ module EntriesHelper
 			redirect_to entries_path
 		end
 	end
+
+	def competition_is_open
+		competition = Competition.find(params[:competition_id])
+		unless competition.open?
+			store_location
+			flash[:error] = "This competition has been closed, you cannot modify entries."
+			redirect_to competition
+		end
+	end
 end

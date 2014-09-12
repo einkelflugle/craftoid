@@ -12,4 +12,8 @@ class Competition < ActiveRecord::Base
 	def self.most_entered
 		Competition.all.sort_by { |competition| competition.entries.count }.reverse
 	end
+
+	def winner
+		Robot.find(self.entries.sort_by { |entry| entry.votes }.reverse.first.robot_id)
+	end
 end

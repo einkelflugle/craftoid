@@ -3,6 +3,7 @@ class EntriesController < ApplicationController
 
 	before_action :signed_in_user, except: [:index, :popular]
 	before_action :owns_entry, only: [:destroy]
+	before_action :competition_is_open, only: [:create, :destroy, :vote]
 
 	def index
 		@competition = Competition.find(params[:competition_id])
