@@ -13,6 +13,11 @@
 	background-color: $alert-color-dark;
 }
 
+// Makes alert boxes a bit more readable
+.alert-box.error {
+	color: black;
+}
+
 // Helps with custom pseudo element styles
 .button {
 	position: relative;
