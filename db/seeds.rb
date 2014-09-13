@@ -1,7 +1,8 @@
 # Create the initial 10 tiers
-Tier.destroy_all
-10.times do |i|
-	Tier.create(name: "#{i + 1}")
+if Tier.blank?
+	10.times do |i|
+		Tier.create(name: "#{i + 1}")
+	end
 end
 
 # Add some default categories just to get started
