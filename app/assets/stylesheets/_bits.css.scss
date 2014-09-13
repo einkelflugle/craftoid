@@ -55,6 +55,7 @@ img {
 // Gets rid of bottom border on weapon type tooltip
 .weapon {
 	border-bottom: none;
+	height: 50px;
 	&:hover {
 		border-bottom: none;
 	}
