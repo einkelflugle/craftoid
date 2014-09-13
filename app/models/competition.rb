@@ -9,6 +9,8 @@ class Competition < ActiveRecord::Base
 
 	include Viewable
 
+	before_create :open_competition
+
 	def self.most_entered
 		Competition.all.sort_by { |competition| competition.entries.count }.reverse
 	end
@@ -16,4 +18,9 @@ class Competition < ActiveRecord::Base
 	def winner
 		Robot.find(self.entries.sort_by { |entry| entry.votes }.reverse.first.robot_id)
 	end
+
+	private
+		def open_competition
+			self.open = true
+		end
 end
