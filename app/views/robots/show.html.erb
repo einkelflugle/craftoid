@@ -27,6 +27,9 @@
 				<% end %>
 				<p class="body"><%= pluralize(@robot.views, "view") %>, <%= pluralize(@robot.comments.count, "comment") %></p>
 				<p>By <%= link_to @user.name, @user %>, <%= time_ago_in_words(@robot.created_at) %> ago</p>
+			
+				<img src="<%= image_url(@robot.weapon.short_name + ".png") %>" data-tooltip aria-haspopup="true" class="has-tip tip-right weapon" title="<%= @robot.weapon.name %>">
+
 				<% if current_user?(@user) || admin?(current_user) %>
 					<%= link_to "Edit robot", edit_robot_path(@robot), class: "button small secondary" %>
 					<%= link_to "Delete robot", @robot, method: :delete, data: { confirm: 'Are you sure?' }, class: "button small alert" %>

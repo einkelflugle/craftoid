@@ -51,3 +51,11 @@ img {
 .important-comment {
 	background-color: #4D2F21;
 }
+
+// Gets rid of bottom border on weapon type tooltip
+.weapon {
+	border-bottom: none;
+	&:hover {
+		border-bottom: none;
+	}
+}

@@ -5,8 +5,9 @@ class Robot < ActiveRecord::Base
 	has_many :competitions, through: :entries
 	has_many :comments, dependent: :destroy
 	has_and_belongs_to_many :categories
+	belongs_to :weapon
 
-	validates_presence_of :name, :description, :categories, :user_id, :tier_id
+	validates_presence_of :name, :description, :categories, :weapon, :user_id, :tier_id
 	validates :name, length: {minimum: 5}
 	validate :is_steam_url
 

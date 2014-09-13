@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912101512) do
+ActiveRecord::Schema.define(version: 20140913015245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,10 +71,12 @@ ActiveRecord::Schema.define(version: 20140912101512) do
     t.string   "screenshot_url"
     t.integer  "user_id"
     t.integer  "views"
+    t.integer  "weapon_id"
   end
 
   add_index "robots", ["tier_id"], name: "index_robots_on_tier_id", using: :btree
   add_index "robots", ["user_id"], name: "index_robots_on_user_id", using: :btree
+  add_index "robots", ["weapon_id"], name: "index_robots_on_weapon_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -114,5 +116,10 @@ ActiveRecord::Schema.define(version: 20140912101512) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+
+  create_table "weapons", force: true do |t|
+    t.string "name"
+    t.string "short_name"
+  end
 
 end
