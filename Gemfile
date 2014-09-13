@@ -57,6 +57,9 @@ gem 'will_paginate', '3.0.4'
 # Pagination helper for Foundation CSS framework
 gem 'will_paginate-foundation'
 
+# Autolink gem for robot descriptions
+gem 'rails_autolink', '~> 1.1.6'
+
 group :production do 
 	gem 'rails_12factor'
 end

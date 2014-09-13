@@ -9,7 +9,7 @@
 				<%= link_to robot.name, robot %>
 			</h2>
 			<p>by <%= link_to robot.user.name, robot.user %> <%= time_ago_in_words(robot.created_at) %> ago</p>
-			<p><%= truncate(robot.description, length: 200) %></p>
+			<p><%= auto_link(truncate(robot.description, length: 200)) %></p>
 		</div>
 		<div class="large-3 medium-4 columns">
 			<% robot.categories.each do |c| %>
