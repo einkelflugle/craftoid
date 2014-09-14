@@ -3,7 +3,7 @@
 
 <div class="row body">
 	<div class="large-8 columns">
-		<p class="lead"><%= @competition.description %></p>
+		<p class="lead"><%= linked_text_body @competition.description %></p>
 		<hr>
 		<% if @competition.open? %>
 			<% if signed_in? %>

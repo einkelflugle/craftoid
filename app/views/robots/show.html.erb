@@ -8,7 +8,7 @@
 					<span class="label tier"><%= link_to "T" + @robot.tier.name, tier_path(@robot.tier.name) %></span>
 					<%= @robot.name %>
 				</h1>
-				<p class="lead"><%= auto_link(@robot.description, html: { target: '_blank' }) %></p>
+				<p class="lead"><%= linked_text_body @robot.description %></p>
 				
 				<% if Time.at(@robot.updated_at).to_date != Time.at(@robot.created_at).to_date %>
 					<p>Last updated <%= time_ago_in_words(@robot.updated_at) %> ago</p>
