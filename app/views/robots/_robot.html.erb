@@ -1,9 +1,9 @@
 <div class="item">
 	<div class="row">
-		<div class="large-3 medium-12 columns text-center">
+		<div class="large-3 small-12 columns text-center">
 			<%= link_to image_tag(robot.screenshot_url + "288x162.resizedImage", alt: robot.name), robot %>
 		</div>
-		<div class="large-6 medium-8 columns">
+		<div class="large-6 small-8 columns">
 			<h2>
 				<span class="label tier"><%= link_to "T" + robot.tier.name, tier_path(robot.tier.name) %></span>
 				<%= link_to robot.name, robot %>
@@ -11,7 +11,7 @@
 			<p>by <%= link_to robot.user.name, robot.user %> <%= time_ago_in_words(robot.created_at) %> ago</p>
 			<p><%= linked_text_body robot.description, truncate: 200 %></p>
 		</div>
-		<div class="large-3 medium-4 columns">
+		<div class="large-3 small-4 columns">
 			<% robot.categories.each do |c| %>
 				<%= link_to c.name, c, class: "label category" %>
 			<% end %>
