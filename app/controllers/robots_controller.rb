@@ -1,7 +1,7 @@
 class RobotsController < ApplicationController
 	include RobotsHelper
 
-	before_action :signed_in_user, only: [:new, :create, :destroy, :edit, :update, :destroy]
+	before_action :signed_in_user, except: [:index, :popular, :show]
 	before_action :owns_robot, only: [:edit, :update, :destroy]
 
 	def index
@@ -62,6 +62,18 @@ class RobotsController < ApplicationController
 		@robot = Robot.find(params[:id])
 		@robot.destroy
 		redirect_to robots_path
+	end
+
+	def favorite
+		@robot = Robot.find(params[:id])
+		if current_user.voted_for? @robot
+			@robot.unliked_by current_user
+			flash[:success] = "Removed #{@robot.name} from your favorites."
+		else
+			@robot.liked_by current_user
+			flash[:success] = "Added #{@robot.name} to your favorites."
+		end
+		redirect_to @robot
 	end
 
 	private

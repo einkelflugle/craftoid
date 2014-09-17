@@ -63,6 +63,11 @@ class UsersController < ApplicationController
 		@entries = @user.robots.entries
 	end
 
+	def favorites
+		@user = User.find(params[:id])
+		@favorited_robots = @user.find_liked_items
+	end
+
 	private
 		def user_params
 			params.require(:user).permit(:name, :email, :password, :password_confirmation)

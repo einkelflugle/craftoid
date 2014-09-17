@@ -67,3 +67,58 @@ select.full-width {
 		border-left-color: scale-color($button-bg-color, $lightness: $button-function-factor);
 	}
 }
+
+// A star for robot favoriting
+$star-color: gray;
+.star {
+	margin: 30px 0;
+	position: relative;
+	display: block;
+	color: $star-color;
+	width: 0px;
+	height: 0px;
+	border-right:  25px solid transparent;
+	border-bottom: 17.5px  solid $star-color;
+	border-left:   25px solid transparent;
+	@include rotate(35deg);
+	&:hover {
+		border-bottom: 17.5px solid $star-color;
+	}
+}
+.star:before {
+	border-bottom: 20px solid $star-color;
+	border-left: 7.5px solid transparent;
+	border-right: 7.5px solid transparent;
+	position: absolute;
+	height: 0;
+	width: 0;
+	top: -11.25px;
+	left: -16.25px;
+	display: block;
+	content: '';
+	@include rotate(-35deg);
+}
+.star:after {
+	position: absolute;
+	display: block;
+	color: $star-color;
+	left: -26.25px;
+	width: 0px;
+	height: 0px;
+	border-right: 25px solid transparent;
+	border-bottom: 17.5px solid $star-color;
+	border-left: 25px solid transparent;
+	@include rotate(-70deg);
+	content: '';
+}
+.star.voted {
+	color: $primary-color;
+	border-bottom: 17.5px solid $primary-color;
+	&:before {
+		border-bottom: 20px solid $primary-color;
+	}
+	&:after {
+		color: $primary-color;
+		border-bottom: 17.5px solid $primary-color;
+	}
+}

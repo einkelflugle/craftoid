@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	has_many :competitions, dependent: :destroy
 
 	has_secure_password
+	acts_as_voter
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :name, presence: true, length: { maximum: 50 }

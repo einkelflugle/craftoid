@@ -13,6 +13,8 @@ class Robot < ActiveRecord::Base
 
 	include Viewable
 
+	acts_as_votable
+
 	def similar_robots(minimum_similar_categories = 1)
 		matches = [] # Gets set to an array of robot objects
 		Robot.all.each do |robot|

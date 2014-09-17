@@ -1,0 +1,4 @@
+<% provide :hero_title, "#{@user.name}'s favorited robots" %>
+<% provide :hero_subtitle, pluralize(@favorited_robots.count, 'robot') %>
+
+<%= render @favorited_robots %>

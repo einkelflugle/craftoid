@@ -58,6 +58,9 @@ gem 'will_paginate-foundation'
 # Autolink gem for robot descriptions
 gem 'rails_autolink', '~> 1.1.6'
 
+# Acts as votable for favouriting robots
+gem 'acts_as_votable', '~> 0.10.0'
+
 group :production do 
 	gem 'rails_12factor'
 end

@@ -21,6 +21,8 @@
 				<%= pluralize(robot.entries.count, "entry") %>
 			</p>
 
+			<%= render 'robots/favorite', robot: robot %>
+
 			<% if current_user?(robot.user) || admin?(current_user) %>
 				<%= link_to "Edit", edit_robot_path(robot), class: "button tiny secondary" %>
 				<%= link_to "Delete", robot, method: :delete, data: { confirm: "Are you sure?" }, class: "button tiny alert" %>
