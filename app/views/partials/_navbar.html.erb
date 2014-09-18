@@ -23,7 +23,10 @@
                         <ul class="dropdown">
                             <li><%= link_to "Robot", new_robot_path %></li>
                             <li><%= link_to "Competition", new_competition_path %></li>
-                            <li><%= link_to_if(admin?(current_user), "Category", new_category_path) {} %></li>
+                            <% if admin? current_user %>
+                                <li><%= link_to "Category", new_category_path %></li>
+                                <li><%= link_to "Help topic", new_help_topic_path %></li>
+                            <% end %>
                         </ul>
                     </li>
                 <% end %>

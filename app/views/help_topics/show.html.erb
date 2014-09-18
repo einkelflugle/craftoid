@@ -1,0 +1,8 @@
+<% provide :hero_title, @help_topic.title %>
+
+<div class="row body">
+	<%= render 'sidebar' %>
+	<div class="large-9 columns">
+		<p><%= linked_text_body @help_topic.body %></p>
+	</div>
+</div>

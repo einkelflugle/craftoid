@@ -1,0 +1,20 @@
+<%= form_for @help_topic do |f| %>
+
+	<% if @help_topic.errors.any? %>
+		<% @help_topic.errors.full_messages.each do |msg| %>
+		<div data-alert class="alert-box alert">
+			<%= msg %>
+			<a href="#" class="close">&times;</a>
+		</div>
+		<% end %>
+	<% end %>
+
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+
+	<%= f.label :body %>
+	<%= f.text_area :body, rows: 10 %>
+
+	<%= button_tag "Submit", class: "button" %>
+	<%= link_to "Back", help_path, class: "button secondary" %>
+<% end %>
