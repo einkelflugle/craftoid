@@ -381,7 +381,7 @@ $button-font-color: #000;
 // $secondary-button-border-color: $secondary-button-bg-hover;
 // $success-button-bg-hover: scale-color($success-color, $lightness: $button-function-factor);
 // $success-button-border-color: $success-button-bg-hover;
-// $alert-button-bg-hover: scale-color($alert-color, $lightness: $button-function-factor);
+$alert-button-bg-hover: scale-color($alert-color-dark, $lightness: -20%);
 // $alert-button-border-color: $alert-button-bg-hover;
 
 // We use this to set the default radius used throughout the core.
