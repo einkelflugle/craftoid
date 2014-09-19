@@ -5,7 +5,10 @@
 	background-position: top center;
 	&.hero-special {
 		background-image: image-url("mars.jpg");
-		background-position: center -200px;
+		background-position: center center;
+		@media only screen and (min-width: 64.063em) {
+			background-position: center -200px;
+		}
 	}
 	.hero-inner {
 		padding: 100px 20px;
