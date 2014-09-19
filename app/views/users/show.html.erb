@@ -1,4 +1,5 @@
-<% provide :hero_title, @user.name %>
+<% provide :hero_title, @username %>
+<% provide :hero_special, true %>
 
 <div class="row body">
 	<div class="large-12 columns">
@@ -6,14 +7,52 @@
 			<%= gravatar_for @user %>
 			<%= @username %>
 		</h1>
-		<p class="lead"><%= pluralize(@robots.count, "robot") %></p>
-		<p class="lead"><%= pluralize(@user.num_entries, "entry") %></p>
-		<%= link_to "View robots", robots_user_path(@user), class: "button" %>
-		<%= link_to "View favorites", favorites_user_path(@user), class: "button" %>
-		<%= link_to "Back", :back, class: "button secondary" %>
+		
+		<dl class="tabs" data-tab>
+			<dd class="active"><a href="#robots">Robots (<%= @robots.count %>)</a></dd>
+			<dd><a href="#competitions">Competitions (<%= @competitions.count %>)</a></dd>
+			<dd><a href="#favorites">Favorites (<%= @favorites.count %>)</a></dd>
+			<dd><a href="#comments">Comments (<%= @comments.count %>)</a></dd>
+			<dd><a href="#entries">Entries (<%= @entries.count %>)</a></dd>
+		</dl>
+	</div>
+</div>
 
-		<% if !@comments.blank? %>
-			<h3><%= @username %>'s comments:</h3>
+<div class="tabs-content">
+	<div class="content active" id="robots">
+		<% if @robots.present? %>
+			<%= render @robots %>
+			<div class="row body">
+				<div class="large-4 columns large-centered">
+					<%= link_to "View all #{@username}'s robots", robots_user_path(@user), class: "button expand" %>
+				</div>
+			</div>
+		<% else %>
+			<p class="text-center">No robots to display.</p>
+		<% end %>
+	</div>
+	<div class="content" id="competitions">
+		<%= render @competitions %>
+		<div class="row body">
+			<div class="large-4 columns large-centered">
+				<%= link_to "View all #{@username}'s competitions", competitions_user_path(@user), class: "button expand" %>
+			</div>
+		</div>
+	</div>
+	<div class="content" id="favorites">
+		<% if @favorites.present? %>
+			<%= render @favorites %>
+			<div class="row body">
+				<div class="large-4 columns large-centered">
+					<%= link_to "View all #{@username}'s favorites", favorites_user_path(@user), class: "button expand" %>
+				</div>
+			</div>
+		<% else %>
+			<p class="text-center">This user has no favorites.</p>
+		<% end %>
+	</div>
+	<div class="content" id="comments">
+		<% if @comments.present? %>
 			<% @comments.each do |comment| %>
 				<div class="body row">
 					<div class="large-12 columns dark body">
@@ -23,6 +62,38 @@
 					</div>
 				</div>
 			<% end %>
+		<% else %>
+			<p class="text-center">No comments to display.</p>
+		<% end %>
+	</div>
+	<div class="content" id="entries">
+		<% if @entries.present? %>
+			<% @entries.each do |entry| %>
+				<div class="item">
+					<div class="row">
+						<div class="large-3 medium-4 columns">
+							<%= link_to image_tag(entry.robot.screenshot_url + "288x162.resizedImage", alt: entry.robot.name), entry.robot %>
+						</div>
+						<div class="large-6 medium-8 columns">
+							<h2>
+								<span class="label tier"><%= link_to "T" + entry.robot.tier.name, tier_path(entry.robot.tier.name) %></span>
+								<%= link_to entry.robot.name, entry.robot %>
+							</h2>
+							<p>by <%= link_to entry.robot.user.name, entry.robot.user %> <%= time_ago_in_words(entry.created_at) %> ago</p>
+							<p><%= linked_text_body entry.robot.description, truncate: 100 %></p>
+						</div>
+						<div class="large-3 columns">
+							<% entry.robot.categories.each do |c| %>
+								<%= link_to c.name, c, class: "label category" %>
+							<% end %>
+							<p class="body"><%= pluralize(entry.votes, "vote") %></p>
+							<p>In <%= link_to entry.competition.name, entry.competition %></p>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% else %>
+			<p class="text-center">This user has no entries.</p>
 		<% end %>
 	</div>
 </div>

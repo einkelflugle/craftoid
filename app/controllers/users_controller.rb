@@ -13,7 +13,9 @@ class UsersController < ApplicationController
 		@username = @user.name
 		@robots = @user.robots
 		@comments = @user.comments.reverse
+		@competitions = @user.competitions
 		@entries = @user.entries.all.sort_by { |entry| entry.votes }.reverse
+		@favorites = @user.find_liked_items
 	end
 
 	def new

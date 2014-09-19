@@ -16,7 +16,7 @@ class Competition < ActiveRecord::Base
 	end
 
 	def winner
-		Robot.find(self.entries.sort_by { |entry| entry.votes }.reverse.first.robot_id)
+		Robot.find(self.entries.sort_by { |entry| entry.votes }.reverse.first.robot_id) unless self.entries.blank?
 	end
 
 	private

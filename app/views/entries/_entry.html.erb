@@ -1,27 +1,25 @@
-<% robot = Robot.find(entry.robot_id) %>
-
 <div class="item">
 	<div class="row">
 		<div class="large-3 medium-4 columns">
-			<%= link_to image_tag(robot.screenshot_url + "288x162.resizedImage", alt: robot.name), robot %>
+			<%= link_to image_tag(entry.robot.screenshot_url + "288x162.resizedImage", alt: entry.robot.name), entry.robot %>
 		</div>
 		<div class="large-6 medium-8 columns">
 			<h2>
-				<span class="label tier"><%= link_to "T" + robot.tier.name, tier_path(robot.tier.name) %></span>
-				<%= link_to robot.name, robot %>
+				<span class="label tier"><%= link_to "T" + entry.robot.tier.name, tier_path(entry.robot.tier.name) %></span>
+				<%= link_to entry.robot.name, entry.robot %>
 			</h2>
-			<p>by <%= link_to robot.user.name, robot.user %> <%= time_ago_in_words(entry.created_at) %> ago</p>
-			<p><%= linked_text_body robot.description, truncate: 100 %></p>
+			<p>by <%= link_to entry.robot.user.name, entry.robot.user %> <%= time_ago_in_words(entry.created_at) %> ago</p>
+			<p><%= linked_text_body entry.robot.description, truncate: 100 %></p>
 		</div>
 		<div class="large-3 columns">
-			<% robot.categories.each do |c| %>
+			<% entry.robot.categories.each do |c| %>
 				<%= link_to c.name, c, class: "label category" %>
 			<% end %>
 			<p class="body"><%= pluralize(entry.votes, "vote") %></p>
 
 			<%= link_to_if(@competition.open?, "Vote", vote_competition_entry_path(@competition, entry), method: 'post', class: "button tiny") {} %>
 
-			<% if current_user?(robot.user) || admin?(current_user) %>
+			<% if current_user?(entry.robot.user) || admin?(current_user) %>
 				<%= link_to_if(@competition.open?, "Delete", [@competition, entry], method: :delete, data: { confirm: "Are you sure? This will remove all of its votes." }, class: "button tiny alert") {} %>
 			<% end %>
 		</div>

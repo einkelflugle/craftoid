@@ -1,5 +1,6 @@
 <% provide :hero_title, @competition.name %>
 <% provide :hero_subtitle, pluralize(@competition.robots.count, "entry") %>
+<% provide :hero_special, true %>
 
 <div class="row body">
 	<div class="large-8 columns">
