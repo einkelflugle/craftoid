@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root 'welcome#index'
 
     resources :categories, only: [:show, :create, :new, :edit, :update]
-    resources :help_topics, only: [:index, :show, :new, :create]
+    resources :help_topics
     
     resources :competitions do
         post 'close', on: :member

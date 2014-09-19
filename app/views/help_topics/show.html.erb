@@ -5,5 +5,7 @@
 	<%= render 'sidebar' %>
 	<div class="large-9 columns">
 		<p><%= linked_text_body @help_topic.body %></p>
+		<%= link_to_if(admin?(current_user), "Edit", edit_help_topic_path(@help_topic), class: "button secondary small") {} %>
+		<%= link_to_if(admin?(current_user), "Delete", @help_topic, method: :delete, data: { confirm: "Are you sure?" }, class: "button alert small") {} %>
 	</div>
 </div>
