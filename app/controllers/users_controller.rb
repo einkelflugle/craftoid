@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 		@username = @user.name
 		@robots = @user.robots
 		@comments = @user.comments.reverse
+		@entries = @user.entries.all.sort_by { |entry| entry.votes }.reverse
 	end
 
 	def new

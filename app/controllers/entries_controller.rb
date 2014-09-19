@@ -18,6 +18,9 @@ class EntriesController < ApplicationController
 	def create
 		@competition = Competition.find(params[:competition_id])
 		@entry = @competition.entries.build(entry_params)
+
+		current_user.entries << @entry
+
 		if @entry.save
 			redirect_to @competition
 			flash[:success] = "Successfully entered #{@entry.robot.name}"

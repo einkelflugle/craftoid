@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 	has_many :robots, dependent: :destroy
 	has_many :comments, dependent: :destroy
 	has_many :competitions, dependent: :destroy
+	has_many :entries, dependent: :destroy
 
 	has_secure_password
 	acts_as_voter
@@ -36,15 +37,6 @@ class User < ActiveRecord::Base
 		enterable -= competition.robots
 
 		enterable
-	end
-
-	# TODO: make less hacky
-	def num_entries
-		num = 0
-		self.robots.each do |robot|
-			num += Entry.where(robot_id: robot.id).count
-		end
-		num
 	end
 
 	private

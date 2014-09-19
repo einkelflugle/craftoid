@@ -1,6 +1,7 @@
 class Entry < ActiveRecord::Base
 	belongs_to :robot
 	belongs_to :competition
+	belongs_to :user
 
 	before_create :initialise_vote_count
 
