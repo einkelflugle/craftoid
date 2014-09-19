@@ -9,6 +9,7 @@ end
 Category.create(name: "Sniper", description: "A lightly armoured robot with powerful, long-rage railguns.")
 Category.create(name: "Gunbed", description: "A very well armoured wheeled vehicle, normally equipped with large amounts of lasers.")
 Category.create(name: "Flyer", description: "A moderately armoured winged robot, usually with several thrusters. Weaponry can vary.")
+Category.create(name: "Satellite", description: "A high flying robot that snipes enemies from above. Usually lightly armoured but with powerful weapons.")
 
 # Create the three Robocraft weapon types
 Weapon.create(name: "Subatomic Machine Gun", short_name: "smg")
