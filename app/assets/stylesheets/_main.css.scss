@@ -3,10 +3,15 @@
 	background-image: image-url("background.jpg");
 	background-size: cover;
 	background-position: top center;
+	&.hero-special {
+		background-image: image-url("mars.jpg");
+		background-position: center -200px;
+	}
 	.hero-inner {
 		padding: 100px 20px;
 		color: white;
 		text-align: center;
+		text-shadow: 0 0 10px black;
 		&.small {
 			padding: 70px 20px;
 		}
