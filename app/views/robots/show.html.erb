@@ -31,6 +31,7 @@
 				<img src="<%= image_url(@robot.weapon.short_name + ".png") %>" data-tooltip aria-haspopup="true" class="has-tip tip-right weapon" title="<%= @robot.weapon.name %>">
 
 				<%= render 'robots/favorite', robot: @robot %>
+				<p><%= pluralize(@robot.get_likes.size, "favorite") %></p>
 
 				<% if current_user?(@user) || admin?(current_user) %>
 					<%= link_to "Edit robot", edit_robot_path(@robot), class: "button small secondary" %>

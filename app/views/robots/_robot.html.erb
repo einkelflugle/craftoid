@@ -10,6 +10,10 @@
 			</h2>
 			<p>by <%= link_to robot.user.name, robot.user %> <%= time_ago_in_words(robot.created_at) %> ago</p>
 			<p><%= linked_text_body robot.description, truncate: 200 %></p>
+			<% if current_user?(robot.user) || admin?(current_user) %>
+				<%= link_to "Edit", edit_robot_path(robot), class: "button tiny secondary" %>
+				<%= link_to "Delete", robot, method: :delete, data: { confirm: "Are you sure?" }, class: "button tiny alert" %>
+			<% end %>
 		</div>
 		<div class="large-3 small-4 columns">
 			<% robot.categories.each do |c| %>
@@ -22,11 +26,7 @@
 			</p>
 
 			<%= render 'robots/favorite', robot: robot %>
-
-			<% if current_user?(robot.user) || admin?(current_user) %>
-				<%= link_to "Edit", edit_robot_path(robot), class: "button tiny secondary" %>
-				<%= link_to "Delete", robot, method: :delete, data: { confirm: "Are you sure?" }, class: "button tiny alert" %>
-			<% end %>
+			<p><%= pluralize(robot.get_likes.size, "favorite") %></p>
 		</div>
 	</div>
 </div>
