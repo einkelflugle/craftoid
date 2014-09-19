@@ -12,7 +12,8 @@
 	<%= f.label :name %>
 	<%= f.text_field :name %>
 
-	<%= f.label :description %>
+	<%= f.label :description, class: "left" %>
+	<span data-tooltip aria-haspopup="true" class="has-tip right" title="You can use links in your competition's description by simply entering the URL. This can be useful to link to imgur albums or YouTube videos.">Remember</span>
 	<%= f.text_area :description, rows: 8 %>
 
 	<%= f.label :categories %>
