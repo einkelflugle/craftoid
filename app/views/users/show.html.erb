@@ -1,13 +1,8 @@
-<% provide :hero_title, @username %>
+<% provide :hero_title, gravatar_for(@user) + @username %>
 <% provide :hero_special, true %>
 
-<div class="row body">
-	<div class="large-12 columns">
-		<h1>
-			<%= gravatar_for @user %>
-			<%= @username %>
-		</h1>
-		
+<div class="dark">
+	<div class="row">		
 		<dl class="tabs" data-tab>
 			<dd class="active"><a href="#robots">Robots (<%= @robots.count %>)</a></dd>
 			<dd><a href="#competitions">Competitions (<%= @competitions.count %>)</a></dd>
