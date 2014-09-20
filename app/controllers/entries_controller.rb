@@ -6,17 +6,17 @@ class EntriesController < ApplicationController
 	before_action :competition_is_open, only: [:create, :destroy, :vote]
 
 	def index
-		@competition = Competition.find(params[:competition_id])
+		@competition = Competition.friendly.find(params[:competition_id])
 		@entries = @competition.entries.paginate(page: params[:page], per_page: 9)
 	end
 
 	def popular
-		@competition = Competition.find(params[:competition_id])
+		@competition = Competition.friendly.find(params[:competition_id])
 		@entries = @competition.entries.order('votes DESC').paginate(page: params[:page], per_page: 9)
 	end
 
 	def create
-		@competition = Competition.find(params[:competition_id])
+		@competition = Competition.friendly.find(params[:competition_id])
 		@entry = @competition.entries.build(entry_params)
 
 		current_user.entries << @entry
@@ -30,14 +30,14 @@ class EntriesController < ApplicationController
 	end
 
 	def destroy
-		@competition = Competition.find(params[:competition_id])
+		@competition = Competition.friendly.find(params[:competition_id])
 		@entry = Entry.find(params[:id])
 		@entry.destroy
 		redirect_to @competition
 	end
 
 	def vote
-		@competition = Competition.find(params[:competition_id])
+		@competition = Competition.friendly.find(params[:competition_id])
 		@entry = Entry.find(params[:id])
 
 		session[:voted_for_entries] ||= []

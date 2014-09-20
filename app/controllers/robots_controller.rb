@@ -17,7 +17,12 @@ class RobotsController < ApplicationController
 	end
 
 	def show
-		@robot = Robot.find(params[:id])
+		@robot = Robot.friendly.find(params[:id])
+
+		if request.path != robot_path(@robot)
+			return redirect_to @robot, status: :moved_permanently
+		end
+
 		@user = @robot.user
 		@comments = @robot.comments
 		@similar_robots = @robot.similar_robots.first(3)
@@ -31,11 +36,11 @@ class RobotsController < ApplicationController
 	end
 
 	def edit
-		@robot = Robot.find(params[:id])
+		@robot = Robot.friendly.find(params[:id])
 	end
 
 	def update
-		@robot = Robot.find(params[:id])
+		@robot = Robot.friendly.find(params[:id])
 
 		if @robot.update(robot_params)
 			redirect_to @robot
@@ -59,13 +64,13 @@ class RobotsController < ApplicationController
 	end
 
 	def destroy
-		@robot = Robot.find(params[:id])
+		@robot = Robot.friendly.find(params[:id])
 		@robot.destroy
 		redirect_to robots_path
 	end
 
 	def favorite
-		@robot = Robot.find(params[:id])
+		@robot = Robot.friendly.find(params[:id])
 		if current_user.voted_for? @robot
 			@robot.unliked_by current_user
 			flash[:success] = "Removed #{@robot.name} from your favorites."

@@ -52,6 +52,8 @@ GEM
     foundation-rails (5.3.3.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    friendly_id (5.0.4)
+      activerecord (>= 4.0.0)
     fssm (0.2.10)
     hike (1.2.3)
     i18n (0.6.11)
@@ -148,6 +150,7 @@ DEPENDENCIES
   compass-rails
   faker (= 1.1.2)
   foundation-rails
+  friendly_id (~> 5.0.0)
   jbuilder (~> 2.0)
   jquery-rails
   pg

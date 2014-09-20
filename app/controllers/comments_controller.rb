@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 	include CommentsHelper
 
 	def create
-		@robot = Robot.find(params[:robot_id])
+		@robot = Robot.friendly.find(params[:robot_id])
 		@user = current_user
 		@comment = current_user.comments.build(comment_params)
 		@robot.comments << @comment
@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		@robot = Robot.find(params[:robot_id])
+		@robot = Robot.friendly.find(params[:robot_id])
 		@comment = @robot.comments.find(params[:id])
 		if owns_comment(current_user, @comment)
 			@comment.destroy

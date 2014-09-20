@@ -1,6 +1,6 @@
 module CompetitionsHelper
 	def owns_competition
-		@competition = Competition.find(params[:id])
+		@competition = Competition.friendly.find(params[:id])
 		unless current_user == @competition.user || admin?(current_user)
 			store_location
 			flash[:error] = "You cannot modify this competition."

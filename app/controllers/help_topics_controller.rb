@@ -3,7 +3,12 @@ class HelpTopicsController < ApplicationController
 	before_action :admin_user, except: :show
 
 	def show
-		@help_topic = HelpTopic.find(params[:id])
+		@help_topic = HelpTopic.friendly.find(params[:id])
+
+		if request.path != help_topic_path(@help_topic)
+			return redirect_to @help_topic, status: :moved_permanently
+		end
+
 		@help_topics = HelpTopic.all
 	end
 
@@ -22,11 +27,11 @@ class HelpTopicsController < ApplicationController
 	end
 
 	def edit
-		@help_topic = HelpTopic.find(params[:id])
+		@help_topic = HelpTopic.friendly.find(params[:id])
 	end
 
 	def update
-		@help_topic = HelpTopic.find(params[:id])
+		@help_topic = HelpTopic.friendly.find(params[:id])
 		if @help_topic.update_attributes(help_topic_params)
 			redirect_to @help_topic
 		else
@@ -35,7 +40,7 @@ class HelpTopicsController < ApplicationController
 	end
 
 	def destroy
-		@help_topic = HelpTopic.find(params[:id])
+		@help_topic = HelpTopic.friendly.find(params[:id])
 		@help_topic.destroy
 		redirect_to help_path
 	end

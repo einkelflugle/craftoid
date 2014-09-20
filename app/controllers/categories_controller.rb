@@ -16,16 +16,21 @@ class CategoriesController < ApplicationController
 	end
 
 	def show
-		@category = Category.find(params[:id])
+		@category = Category.friendly.find(params[:id])
+
+		if request.path != category_path(@category)
+			return redirect_to @category, status: :moved_permanently
+		end
+
 		@robots = @category.robots
 	end
 
 	def edit
-		@category = Category.find(params[:id])
+		@category = Category.friendly.find(params[:id])
 	end
 
 	def update
-		@category = Category.find(params[:id])
+		@category = Category.friendly.find(params[:id])
 		if @category.save
 			redirect_to @category
 		else

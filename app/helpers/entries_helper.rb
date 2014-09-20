@@ -9,7 +9,7 @@ module EntriesHelper
 	end
 
 	def competition_is_open
-		competition = Competition.find(params[:competition_id])
+		competition = Competition.friendly.find(params[:competition_id])
 		unless competition.open?
 			store_location
 			flash[:error] = "This competition has been closed, you cannot modify entries."

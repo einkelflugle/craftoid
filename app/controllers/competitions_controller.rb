@@ -17,7 +17,12 @@ class CompetitionsController < ApplicationController
 	end
 
 	def show
-		@competition = Competition.find(params[:id])
+		@competition = Competition.friendly.find(params[:id])
+
+		if request.path != competition_path(@competition)
+			return redirect_to @competition, status: :moved_permanently
+		end
+
 		@entries = @competition.entries.all.sort_by { |entry| entry.votes }.reverse.take(5)
 		@user = User.find(@competition.user_id)
 		
@@ -48,11 +53,11 @@ class CompetitionsController < ApplicationController
 	end
 
 	def edit
-		@competition = Competition.find(params[:id])
+		@competition = Competition.friendly.find(params[:id])
 	end
 
 	def update
-		@competition = Competition.find(params[:id])
+		@competition = Competition.friendly.find(params[:id])
 
 		if @competition.update(competition_params)
 			redirect_to @competition
@@ -62,13 +67,13 @@ class CompetitionsController < ApplicationController
 	end
 
 	def destroy
-		@competition = Competition.find(params[:id])
+		@competition = Competition.friendly.find(params[:id])
 		@competition.destroy
 		redirect_to competitions_path
 	end
 
 	def close
-		@competition = Competition.find(params[:id])
+		@competition = Competition.friendly.find(params[:id])
 
 		if @competition.open?
 			@competition.update_attribute(:open, false)

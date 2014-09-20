@@ -61,6 +61,9 @@ gem 'rails_autolink', '~> 1.1.6'
 # Acts as votable for favouriting robots
 gem 'acts_as_votable', '~> 0.10.0'
 
+# Friendly ID for better URLS
+gem 'friendly_id', '~> 5.0.0'
+
 group :production do 
 	gem 'rails_12factor'
 end
