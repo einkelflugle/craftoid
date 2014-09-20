@@ -13,7 +13,7 @@ class Competition < ActiveRecord::Base
 	friendly_id :name, use: :history
 
 	def should_generate_new_friendly_id?
-		name_changed?
+		slug.blank? || name_changed?
 	end
 
 	before_create :open_competition

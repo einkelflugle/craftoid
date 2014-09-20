@@ -6,6 +6,6 @@ class HelpTopic < ActiveRecord::Base
 	friendly_id :title, use: :history
 
 	def should_generate_new_friendly_id?
-		title_changed?
+		slug.blank? || title_changed?
 	end
 end
