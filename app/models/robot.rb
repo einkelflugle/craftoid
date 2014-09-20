@@ -8,7 +8,7 @@ class Robot < ActiveRecord::Base
 	belongs_to :weapon
 
 	validates_presence_of :name, :description, :categories, :weapon, :user_id, :tier_id
-	validates :name, length: {minimum: 5}
+	validates :name, length: { minimum: 5, maximum: 35 }
 	validate :is_steam_url
 
 	include Viewable
