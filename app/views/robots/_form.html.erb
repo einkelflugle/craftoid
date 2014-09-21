@@ -23,10 +23,14 @@
 	<% end %>
 
 	<%= f.label :categories %>
-	<% Category.all.each do |c| %>
-		<%= check_box_tag "robot[category_ids][]", c.id, @robot.categories.include?(c) %>
-		<%= c.name %><br>
-	<% end %>
+	<div class="row">
+		<% Category.all.each do |c| %>
+			<div class="medium-3 columns">
+				<%= check_box_tag "robot[category_ids][]", c.id, @robot.categories.include?(c) %>
+				<span data-tooltip aria-haspopup="true" class="has-tip" title="<%= c.description %>"><%= c.name %></span>
+			</div>
+		<% end %>
+	</div>
 
 	<%= f.label :tier_id %>
 	<%= f.collection_select :tier_id, Tier.all, :id, :name, { prompt: true }, { class: "full-width" } %>
