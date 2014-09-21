@@ -39,6 +39,10 @@ class Robot < ActiveRecord::Base
 		Robot.all.sort_by { |robot| robot.comments.count }.reverse
 	end
 
+	def self.most_favorited
+		Robot.all.sort_by { |robot| robot.get_likes.size }.reverse
+	end
+
 	private
 		def is_steam_url
 			unless self.screenshot_url.include?(".steampowered.com")

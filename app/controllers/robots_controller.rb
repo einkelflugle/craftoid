@@ -16,6 +16,10 @@ class RobotsController < ApplicationController
 		@robots = Robot.most_viewed
 	end
 
+	def favorited
+		@robots = Robot.most_favorited
+	end
+
 	def show
 		@robot = Robot.friendly.find(params[:id])
 

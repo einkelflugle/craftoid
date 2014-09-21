@@ -5,6 +5,7 @@
 			<dd class="<%= "active" if active == "Newest" %>"><%= link_to "Newest", robots_path %></dd>
 			<dd class="<%= "active" if active == "Hot" %>"><%= link_to "Hot", hot_robots_path %></dd>
 			<dd class="<%= "active" if active == "Popular" %>"><%= link_to "Popular", popular_robots_path %></dd>
+			<dd class="<%= "active" if active == "Favorited" %>"><%= link_to "Favorited", favorited_robots_path %></dd>
 			<dd class="<%= "active" if active == "Tier" %>"><%= link_to "Tier", tier_path(Tier.first.name) %></dd>
 			<dd class="<%= "active" if active == "User" %>">
 			<% if defined?(user) && !current_user?(user) %>

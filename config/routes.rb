@@ -26,6 +26,7 @@ Rails.application.routes.draw do
         collection do
             get 'hot'
             get 'popular'
+            get 'favorited'
         end
     end
 
