@@ -12,7 +12,7 @@
 			<p><%= linked_text_body entry.robot.description, truncate: 100 %></p>
 		</div>
 		<div class="large-3 columns">
-			<%= render entry.categories %>
+			<%= render entry.robot.categories %>
 			<p class="body"><%= pluralize(entry.votes, "vote") %></p>
 
 			<%= link_to_if(@competition.open?, "Vote", vote_competition_entry_path(@competition, entry), method: 'post', class: "button tiny") {} %>
