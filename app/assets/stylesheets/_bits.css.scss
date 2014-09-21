@@ -10,14 +10,15 @@
 		color: black;
 		background-color: darken($primary-color, 10%);
 	}
-}
-
-// Adjustments for 'Robot Tier' label styling
-.label.tier {
-	padding: 0.25rem 0.5rem;
-	font-size: inherit;
-	a {
-		color: black;
+	&.category {
+		margin-right: 4px;
+	}
+	&.tier {
+		padding: 0.25rem 0.5rem;
+		font-size: inherit;
+		a {
+			color: black;
+		}
 	}
 }
 
