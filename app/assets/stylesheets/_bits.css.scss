@@ -20,6 +20,10 @@
 			color: black;
 		}
 	}
+	&.alert:hover {
+		color: white;
+		background-color: $alert-color-dark;
+	}
 }
 
 // Give an area a dark background color
