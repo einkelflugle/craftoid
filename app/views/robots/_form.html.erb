@@ -19,7 +19,7 @@
 	<%= f.label :weapon %>
 	<% Weapon.all.each do |w| %>
 		<%= radio_button_tag "robot[weapon_id]", w.id, w == @robot.weapon %>
-		<%= w.name %><br>
+		<%= label_tag "robot_weapon_id_#{w.id}", w.name, class: "label-input" %><br>
 	<% end %>
 
 	<%= f.label :categories %>

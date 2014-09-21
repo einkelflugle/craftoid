@@ -45,6 +45,12 @@ select.full-width {
 	width: 100%;
 }
 
+// Differentiates form field labels and input labels
+.label-input {
+	color: $body-font-color;
+	font-size: 100%;
+}
+
 // Give buttons Robocraft-style top right corner
 .button:not(.secondary):not(.tiny):not(.small):not(.large) {
 	&:after {
