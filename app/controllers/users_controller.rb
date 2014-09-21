@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@username = @user.name
-		@robots = @user.robots
+		@robots = @user.robots.most_viewed.take(5)
 		@comments = @user.comments.reverse
 		@competitions = @user.competitions
 		@entries = @user.entries.all.sort_by { |entry| entry.votes }.reverse
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
 	def robots
 		@user = User.find(params[:id])
-		@robots = Robot.where(user_id: @user.id).most_commented
+		@robots = Robot.where(user_id: @user.id).most_viewed
 	end
 
 	def competitions
