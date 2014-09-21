@@ -2,11 +2,15 @@
 	<div class="row">
 		<div class="large-8 columns">
 			<h2><%= link_to competition.name, competition %></h2>
+			<p>by <%= link_to competition.user.name, competition.user %> <%= time_ago_in_words competition.created_at %> ago</p>
 			<p><%= linked_text_body competition.description, truncate: 200 %></p>
 		</div>
 		<div class="large-4 columns">
-			<p><%= pluralize(competition.views, "view") %></p>
-			<p><%= pluralize(competition.robots.count, "robot") %></p>
+			<%= render competition.categories %>
+			<p class="body">
+				<%= pluralize(competition.views, "view") %><br>
+				<%= pluralize(competition.robots.count, "robot") %>
+			</p>
 			<%= link_to_if(!competition.open?, "Closed", competition, class: "label alert") {} %>
 		</div>
 	</div>
