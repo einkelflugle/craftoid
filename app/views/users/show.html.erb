@@ -74,13 +74,12 @@
 								<span class="label tier"><%= link_to "T" + entry.robot.tier.name, tier_path(entry.robot.tier.name) %></span>
 								<%= link_to entry.robot.name, entry.robot %>
 							</h2>
-							<p>by <%= link_to entry.robot.user.name, entry.robot.user %> <%= time_ago_in_words(entry.created_at) %> ago</p>
+							<p>entered <%= time_ago_in_words(entry.created_at) %> ago in <%= link_to entry.competition.name, entry.competition %></p>
 							<p><%= linked_text_body entry.robot.description, truncate: 100 %></p>
 						</div>
 						<div class="large-3 columns">
-							<%= render entry.categories %>
+							<%= render entry.robot.categories %>
 							<p class="body"><%= pluralize(entry.votes, "vote") %></p>
-							<p>In <%= link_to entry.competition.name, entry.competition %></p>
 						</div>
 					</div>
 				</div>
