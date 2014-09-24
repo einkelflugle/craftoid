@@ -21,7 +21,7 @@
 		<% Category.all.each do |c| %>
 			<div class="medium-3 columns">
 				<%= check_box_tag "competition[category_ids][]", c.id, @competition.categories.include?(c), disabled: @competition.categories.include?(c) %>
-				<span data-tooltip aria-haspopup="true" class="has-tip" title="<%= c.description %>"><%= c.name %></span>
+				<span data-tooltip aria-haspopup="true" class="has-tip no-highlight" title="<%= c.description %>"><%= c.name %></span>
 			</div>
 		<% end %>
 	</div>

@@ -26,6 +26,12 @@
 	}
 }
 
+// A class for tooltips with no special tooltip styles
+.has-tip.no-highlight {
+	border-bottom: 0;
+	font-weight: normal;
+}
+
 // Give an area a dark background color
 .dark {
 	background-color: $dark;

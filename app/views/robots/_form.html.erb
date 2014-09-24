@@ -27,7 +27,7 @@
 		<% Category.all.each do |c| %>
 			<div class="medium-3 columns">
 				<%= check_box_tag "robot[category_ids][]", c.id, @robot.categories.include?(c) %>
-				<span data-tooltip aria-haspopup="true" class="has-tip" title="<%= c.description %>"><%= c.name %></span>
+				<span data-tooltip aria-haspopup="true" class="has-tip no-highlight" title="<%= c.description %>"><%= c.name %></span>
 			</div>
 		<% end %>
 	</div>
