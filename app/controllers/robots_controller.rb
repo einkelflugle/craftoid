@@ -1,7 +1,7 @@
 class RobotsController < ApplicationController
 	include RobotsHelper
 
-	before_action :signed_in_user, except: [:index, :popular, :hot, :show]
+	before_action :signed_in_user, except: [:index, :popular, :hot, :favorited, :show]
 	before_action :owns_robot, only: [:edit, :update, :destroy]
 
 	def index
