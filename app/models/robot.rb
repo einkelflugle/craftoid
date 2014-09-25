@@ -7,9 +7,10 @@ class Robot < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 	belongs_to :weapon
 
-	validates_presence_of :name, :description, :categories, :weapon, :user_id, :tier_id
+	VALID_STEAM_SCRENSHOT_REGEX = /http(s?):\/\/cloud(-[1-4])?.steampowered.com\/ugc\/.+\/.+\//i
+	validates_presence_of :name, :description, :categories, :weapon, :screenshot_url, :user_id, :tier_id
 	validates :name, length: { minimum: 5, maximum: 35 }
-	validate :is_steam_url
+	validates :screenshot_url, format: { with: VALID_STEAM_SCRENSHOT_REGEX, message: " isn't a valid Steam screenshot." }
 
 	include Viewable
 
@@ -42,11 +43,4 @@ class Robot < ActiveRecord::Base
 	def self.most_favorited
 		Robot.all.sort_by { |robot| robot.get_likes.size }.reverse
 	end
-
-	private
-		def is_steam_url
-			unless self.screenshot_url.include?(".steampowered.com")
-				errors.add(:screenshot_url, "isn't valid.")
-			end
-		end
 end
