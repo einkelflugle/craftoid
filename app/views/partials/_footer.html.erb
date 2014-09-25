@@ -1,7 +1,22 @@
 <div class="footer">
 	<ul>
 		<li><%= link_to "Help", help_path %></li>
-		<li><%= link_to "Contact", "#" %></li>
+		<% if signed_in? %>
+			<li><%= link_to "Contact", "#", data: { "reveal-id" => "contactMessageForm" } %></li>
+		<% else %>
+			<li><%= link_to "Contact", signin_path %></li>
+		<% end %>
 		<li><%= link_to "Contribute", "http://github.com/einkelflugle/robocraft-rails" %></li>
 	</ul>
+</div>
+
+<div id="contactMessageForm" class="reveal-modal medium" data-reveal>
+	<h2>Contact us</h2>
+	<p>Use this form to send us a quick message.</p>
+	<%= form_for ContactMessage.new do |f| %>
+		<%= f.label :message %>
+		<%= f.text_area :message, rows: 6 %>
+		<%= button_tag "Submit", class: "button" %>
+	<% end %>
+	<a class="close-reveal-modal">&#215;</a>
 </div>

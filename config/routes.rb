@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :help_topics
     get '/help', to: 'help_topics#index'
 
+    resources :contact_messages
     
     resources :competitions do
         post 'close', on: :member

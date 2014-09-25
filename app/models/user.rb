@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	has_many :comments, dependent: :destroy
 	has_many :competitions, dependent: :destroy
 	has_many :entries, dependent: :destroy
+	has_many :contact_messages
 
 	has_secure_password
 	acts_as_voter
