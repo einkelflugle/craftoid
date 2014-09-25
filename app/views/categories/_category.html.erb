@@ -1,3 +1,3 @@
-<span data-tooltip aria-haspopup="true" class="has-tip no-highlight" title="<%= category.description %>">
+<span data-tooltip aria-haspopup="true" class="has-tip no-highlight" title="<%= category.description %> (<%= pluralize(category.robots.count, 'robot') %> in this category)">
 	<%= link_to category.name, category, class: "label category" %>
 </span>
