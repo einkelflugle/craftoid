@@ -1,6 +1,10 @@
 class HelpTopicsController < ApplicationController
-	before_action :signed_in_user, except: :show
-	before_action :admin_user, except: :show
+	before_action :signed_in_user, except: [:show, :index]
+	before_action :admin_user, except: [:show, :index]
+
+	def index
+		@help_topics = HelpTopic.all
+	end
 
 	def show
 		@help_topic = HelpTopic.friendly.find(params[:id])

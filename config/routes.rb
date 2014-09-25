@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     root 'welcome#index'
 
     resources :categories, only: [:show, :create, :new, :edit, :update]
+
     resources :help_topics
+    get '/help', to: 'help_topics#index'
+
     
     resources :competitions do
         post 'close', on: :member
@@ -45,7 +48,4 @@ Rails.application.routes.draw do
     match '/signup', to: 'users#new', via: 'get'
     match '/signin', to: 'sessions#new', via: 'get'
     match '/signout', to: 'sessions#destroy', via: 'delete'
-
-    # Static pages
-    get '/help', to: 'static_pages#help'
 end
