@@ -1,7 +1,7 @@
 <% if signed_in? %>
 	<% if current_user.voted_for? robot %>
-		<%= link_to "", favorite_robot_path(robot), method: 'post', class: "star voted has-tip tip-right", data: { tooltip: "" }, title: "Unfavorite", 'aria-haspopup' => true %>
+		<%= link_to "", favorite_robot_path(robot), method: 'post', class: "star voted has-tip tip-right", remote: true %>
 	<% else %>
-		<%= link_to "", favorite_robot_path(robot), method: 'post', class: "star has-tip tip-right", data: { tooltip: "" }, title: "Favorite", 'aria-haspopup' => true %>
+		<%= link_to "", favorite_robot_path(robot), method: 'post', class: "star has-tip tip-right", remote: true %>
 	<% end %>
 <% end %>
