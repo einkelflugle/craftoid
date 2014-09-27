@@ -1,0 +1,53 @@
+.row.body
+	.large-12.columns
+		= link_to image_tag(@robot.screenshot_url, alt: @robot.name), @robot.screenshot_url, target: "_blank"
+
+		.row
+			.medium-8.columns
+				%h1
+					%span.label.tier= link_to "T" + @robot.tier.name, tier_path(@robot.tier.name)
+					= @robot.name
+
+				%p= linked_text_body @robot.description
+				
+				- if Time.at(@robot.updated_at).to_date != Time.at(@robot.created_at).to_date
+					%p= "Last updated #{time_ago_in_words @robot.updated_at}"
+				
+				- if @robot.entries.present?
+					%p= "This robot is entered in the following competitions:"
+					- @robot.entries.each do |entry|
+						= link_to entry.competition.name, entry.competition, class: "label"
+
+			.medium-4.columns
+				= render @robot.categories
+
+				%p.body= "#{pluralize @robot.views, 'view'}, #{pluralize @robot.comments.count, 'comment'}"
+				%p
+					By
+					= link_to @user.name, @user
+					,
+					= time_ago_in_words @robot.created_at
+					ago
+
+				%img.has-tip.tip-right.weapon{src: image_url(@robot.weapon.short_name + ".png"), alt: @robot.weapon.name, data: { tooltip: true }, "aria-haspopup" => true, title: @robot.weapon.name}
+				
+				= render 'robots/favorite', robot: @robot
+
+				%p= pluralize @robot.get_likes.size, 'favorite'
+
+				- if current_user?(@user) || admin?(current_user)
+					= link_to "Edit robot", edit_robot_path(@robot), class: "button small secondary"
+					= link_to "Delete robot", @robot, method: :delete, data: { confirm: "Are you sure?" }, class: "button small alert"
+		
+		- if @similar_robots.present?
+			%h2.body= "Similar robots"		
+
+= render @similar_robots
+
+.row.body
+	.large-12.columns
+		%h2= "Comments"
+		= render @comments
+
+.row.body
+	= render 'comments/form'

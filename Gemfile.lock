@@ -48,6 +48,8 @@ GEM
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     fssm (0.2.10)
+    haml (4.0.5)
+      tilt
     hike (1.2.3)
     i18n (0.6.11)
     jbuilder (2.1.3)
@@ -143,6 +145,7 @@ DEPENDENCIES
   faker (= 1.1.2)
   foundation-rails
   friendly_id (~> 5.0.0)
+  haml
   jbuilder (~> 2.0)
   jquery-rails
   pg
