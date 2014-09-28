@@ -44,16 +44,18 @@
 	</div>
 </div>
 
+<% if @competition.entries.count > 0 %>
 <div class="row body">
 	<div class="large-12 columns">
-		<% if @competition.entries.present? %><h2>Most popular entries:</h2><% end %>
+		<h2>Most popular entries:</h2>
 	</div>
 </div>
+<% end %>
 
 <%= render @entries %>
 <div class="row body">
 	<div class="large-3 columns large-centered">
-		<% if @competition.entries.present? %>
+		<% if @competition.entries.count > 0 %>
 			<%= link_to "View all entries", competition_entries_path(@competition), class: "button expand" %>	
 		<% else %>
 			<p class="text-center">No entries to display.</p>
