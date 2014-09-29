@@ -14,7 +14,7 @@
 	<h2>Contact us</h2>
 	<p>Use this form to send us a quick message.</p>
 	<%= form_for ContactMessage.new do |f| %>
-		<%= f.label :message %>
+		<%= f.select :contact_type, options_for_select([['General Inquiry', 'General Inquiry'], ['Bug report/Issue', 'Bug report/Issue']]) %>
 		<%= f.text_area :message, rows: 6 %>
 		<%= button_tag "Submit", class: "button" %>
 	<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929001933) do
+ActiveRecord::Schema.define(version: 20140929023957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140929001933) do
   create_table "contact_messages", force: true do |t|
     t.integer "user_id"
     t.text    "message"
+    t.string  "contact_type"
   end
 
   add_index "contact_messages", ["user_id"], name: "index_contact_messages_on_user_id", using: :btree
