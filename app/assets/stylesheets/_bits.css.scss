@@ -79,6 +79,10 @@ img {
 
 // Sidebar hightlight and padding
 .sidebar {
-	padding: 0 20px;
 	background-color: $dark;
+}
+
+// Improve sidebar heading padding
+.side-nav li.heading {
+	padding: 0 0.875rem;
 }
