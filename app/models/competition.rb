@@ -3,6 +3,7 @@ class Competition < ActiveRecord::Base
 	has_many :robots, through: :entries
 	has_and_belongs_to_many :categories
 	belongs_to :user
+	has_one :winner, class_name: "Win", dependent: :destroy
 
 	validates :name, presence: true, length: { minimum: 5, maximum: 50 }
 	validates :description, presence: true, length: { minimum: 5, maximum: 2500 }
@@ -23,8 +24,13 @@ class Competition < ActiveRecord::Base
 		Competition.all.sort_by { |competition| competition.entries.count }.reverse
 	end
 
-	def winner
-		Robot.find(self.entries.sort_by { |entry| entry.votes }.reverse.first.robot_id) unless self.entries.blank?
+	def close
+		winning_entry = self.entries.sort_by(&:votes).reverse.first
+		winning_robot = Robot.find(winning_entry.robot_id)
+		winner_user = winning_robot.user
+
+		self.winner = winning_robot.wins.build(robot_id: self.id, user_id: winner_user.id, votes: winning_entry.votes)
+		self.update_attribute(:open, false)
 	end
 
 	private

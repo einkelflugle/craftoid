@@ -1,7 +1,7 @@
 <div class="item">
 	<div class="row">
 		<div class="large-8 columns">
-			<h2><%= link_to competition.name, competition %></h2>
+			<h3><%= link_to competition.name, competition %></h3>
 			<p>by <%= link_to competition.user.name, competition.user %> <%= time_ago_in_words competition.created_at %> ago</p>
 			<p><%= linked_text_body competition.description, truncate: 200 %></p>
 		</div>

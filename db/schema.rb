@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925012305) do
+ActiveRecord::Schema.define(version: 20140929001933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140925012305) do
     t.integer  "user_id"
     t.boolean  "open"
     t.string   "slug"
+    t.integer  "entries_count", default: 0
   end
 
   add_index "competitions", ["slug"], name: "index_competitions_on_slug", using: :btree
@@ -111,6 +112,7 @@ ActiveRecord::Schema.define(version: 20140925012305) do
     t.integer  "views"
     t.integer  "weapon_id"
     t.string   "slug"
+    t.integer  "entries_count",  default: 0
   end
 
   add_index "robots", ["slug"], name: "index_robots_on_slug", using: :btree
@@ -132,6 +134,7 @@ ActiveRecord::Schema.define(version: 20140925012305) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
+    t.integer  "entries_count",   default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -156,5 +159,18 @@ ActiveRecord::Schema.define(version: 20140925012305) do
     t.string "name"
     t.string "short_name"
   end
+
+  create_table "wins", force: true do |t|
+    t.integer  "robot_id"
+    t.integer  "competition_id"
+    t.integer  "user_id"
+    t.integer  "votes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wins", ["competition_id"], name: "index_wins_on_competition_id", using: :btree
+  add_index "wins", ["robot_id"], name: "index_wins_on_robot_id", using: :btree
+  add_index "wins", ["user_id"], name: "index_wins_on_user_id", using: :btree
 
 end

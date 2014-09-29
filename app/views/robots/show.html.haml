@@ -34,6 +34,7 @@
 				= render 'robots/favorite', robot: @robot
 
 				%p= pluralize @robot.get_likes.size, 'favorite'
+				%p= link_to_if(@robot.wins.size > 0, pluralize(@robot.wins.size, "win"), wins_robot_path(@robot)) {}
 
 				- if current_user?(@user) || admin?(current_user)
 					= link_to "Edit robot", edit_robot_path(@robot), class: "button small secondary"

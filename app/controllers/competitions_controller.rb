@@ -76,7 +76,7 @@ class CompetitionsController < ApplicationController
 		@competition = Competition.friendly.find(params[:id])
 
 		if @competition.open?
-			@competition.update_attribute(:open, false)
+			@competition.close
 			flash[:success] = "Successfully closed #{@competition.name}"
 		else
 			flash[:error] = "This competition has already been closed."

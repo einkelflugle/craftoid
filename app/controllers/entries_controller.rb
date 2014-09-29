@@ -17,13 +17,15 @@ class EntriesController < ApplicationController
 
 	def create
 		@competition = Competition.friendly.find(params[:competition_id])
-		@entry = @competition.entries.build(entry_params)
-
-		current_user.entries << @entry
+		@robot = Robot.friendly.find(params[:entry][:robot_id])
+		@entry = current_user.entries.build(entry_params)
 
 		if @entry.save
 			redirect_to @competition
 			flash[:success] = "Successfully entered #{@entry.robot.name}"
+
+			@competition.entries << @entry
+			@robot.entries << @entry
 		else
 			flash[:error] = "Try again."
 		end
@@ -54,6 +56,6 @@ class EntriesController < ApplicationController
 
 	private
 		def entry_params
-			params.require(:entry).permit(:competition_id, :robot_id)
+			params.require(:entry).permit(:competition_id, :robot_id, :user_id)
 		end
 end

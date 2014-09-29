@@ -1,7 +1,7 @@
 class Entry < ActiveRecord::Base
-	belongs_to :robot
-	belongs_to :competition
-	belongs_to :user
+	belongs_to :robot, counter_cache: true
+	belongs_to :competition, counter_cache: true
+	belongs_to :user, counter_cache: true
 
 	before_create :initialise_vote_count
 

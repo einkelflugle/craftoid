@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 		@robots = @user.robots.most_viewed.take(5)
 		@comments = @user.comments.reverse
 		@competitions = @user.competitions
+		@wins = @user.wins.count
 		@entries = @user.entries.all.sort_by { |entry| entry.votes }.reverse
 		@favorites = @user.find_liked_items
 	end

@@ -1,0 +1,5 @@
+- provide :hero_title, "#{@robot.name}'s competition wins"
+- provide :hero_subtitle, "#{@wins.count} in total"
+
+- @wins.each do |win|
+	= render win.competition

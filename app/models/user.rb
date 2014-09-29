@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	has_many :competitions, dependent: :destroy
 	has_many :entries, dependent: :destroy
 	has_many :contact_messages
+	has_many :wins, dependent: :destroy
 
 	has_secure_password
 	acts_as_voter

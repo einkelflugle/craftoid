@@ -24,6 +24,10 @@
 		color: white;
 		background-color: $alert-color-dark;
 	}
+	&.success:hover {
+		color: white;
+		background-color: $success-color;
+	}
 }
 
 // A class for tooltips with no special tooltip styles

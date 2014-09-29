@@ -85,6 +85,11 @@ class RobotsController < ApplicationController
 		redirect_to @robot
 	end
 
+	def wins
+		@robot = Robot.friendly.find(params[:id])
+		@wins = @robot.wins
+	end
+
 	private
 		def robot_params
 			params.require(:robot).permit(:name, :description, :weapon_id, :tier_id, :screenshot_url, category_ids: [])

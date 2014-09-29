@@ -4,6 +4,7 @@ class Robot < ActiveRecord::Base
 	has_many :entries, dependent: :destroy
 	has_many :competitions, through: :entries
 	has_many :comments, dependent: :destroy
+	has_many :wins, dependent: :destroy
 	has_and_belongs_to_many :categories
 	belongs_to :weapon
 
@@ -34,6 +35,14 @@ class Robot < ActiveRecord::Base
 			end
 		end
 		matches
+	end
+
+	def competitions_won
+		won = []
+		Win.where(robot_id: self.id).each do |w|
+			won << w.competition
+		end
+		won
 	end
 
 	def self.most_commented

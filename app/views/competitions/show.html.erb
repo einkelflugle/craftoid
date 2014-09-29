@@ -20,9 +20,9 @@
 			<% end %>
 		<% else %>
 			<p>This competition has been closed. You can no longer vote on or submit entries.</p>
-			<% if @competition.entries.present? %>
+			<% if @competition.winner %>
 				<div class="panel callout">
-					<p>Winner: <%= link_to @competition.winner.name, @competition.winner %> by <%= link_to @competition.winner.user.name, @competition.winner.user %></p>
+					<p>Winner: <%= link_to @competition.winner.robot.name, @competition.winner.robot %> by <%= link_to @competition.winner.user.name, @competition.winner.user %></p>
 				</div>
 			<% end %>
 		<% end %>

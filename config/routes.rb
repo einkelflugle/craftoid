@@ -26,7 +26,10 @@ Rails.application.routes.draw do
 
     resources :robots do
         resources :comments, only: [:create, :destroy]
-        post 'favorite', on: :member
+        member do
+            post 'favorite'
+            get 'wins'
+        end
         collection do
             get 'hot'
             get 'popular'
